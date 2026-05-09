@@ -2,32 +2,13 @@
 </main>
 
 <footer class="site-footer">
-  <div class="container site-footer__grid">
-    <div>
-      <img src="<?= e(asset('images/locksmiths-ie-logo-white.svg')) ?>" alt="Locksmiths.ie" class="site-footer__logo" width="180" height="44">
+  <div class="container site-footer__top">
+
+    <div class="site-footer__brand">
+      <img src="<?= e(asset('images/locksmiths-ie-logo-white.svg')) ?>"
+           alt="Locksmiths.ie" class="site-footer__logo" width="240" height="60">
       <p>PSA-licensed Dublin locksmith. Emergency lockouts, lock changes, burglary repairs and smart-lock installation across Dublin and the Greater Dublin Area.</p>
-      <p class="psa-badge">
-        <strong>PSA License:</strong> <?= e(setting('psa_license')) ?>
-      </p>
-    </div>
-
-    <div>
-      <h4>Services</h4>
-      <ul class="link-list">
-        <?php foreach (get_services() as $s): ?>
-          <li><a href="<?= e(url('/' . $s['slug'])) ?>"><?= e($s['title']) ?></a></li>
-        <?php endforeach; ?>
-      </ul>
-    </div>
-
-    <div>
-      <h4>Popular Locations</h4>
-      <ul class="link-list">
-        <?php foreach (array_slice(get_locations(), 0, 9) as $l): ?>
-          <li><a href="<?= e(url('/' . $l['slug'])) ?>">Locksmith <?= e($l['name']) ?></a></li>
-        <?php endforeach; ?>
-        <li><a href="<?= e(url('/locations')) ?>"><strong>View all locations →</strong></a></li>
-      </ul>
+      <p class="psa-badge"><strong>PSA License:</strong> <?= e(setting('psa_license')) ?></p>
     </div>
 
     <div>
@@ -59,12 +40,54 @@
         </ul>
       <?php endif; ?>
     </div>
+
+    <div>
+      <h4>Popular Locations</h4>
+      <ul class="link-list">
+        <?php foreach (array_slice(get_locations(), 0, 8) as $l): ?>
+          <li><a href="<?= e(url('/' . $l['slug'])) ?>"><?= e($l['name']) ?></a></li>
+        <?php endforeach; ?>
+        <li><a href="<?= e(url('/locations')) ?>"><strong>All locations →</strong></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <?php
+  $cats = [
+      'emergency'   => 'Emergency',
+      'residential' => 'Residential',
+      'commercial'  => 'Commercial',
+      'automotive'  => 'Automotive & Safe',
+  ];
+  $by_cat = ['emergency'=>[], 'residential'=>[], 'commercial'=>[], 'automotive'=>[]];
+  foreach (get_services() as $s) {
+      $c = $s['category'] === 'safe' ? 'automotive' : $s['category'];
+      if (!isset($by_cat[$c])) continue;
+      if (count($by_cat[$c]) >= 8) continue;     // trim each column
+      $by_cat[$c][] = $s;
+  }
+  ?>
+  <div class="container site-footer__services">
+    <h4 class="site-footer__services-title">Our Services</h4>
+    <div class="site-footer__services-grid">
+      <?php foreach ($cats as $key => $label): ?>
+        <div class="site-footer__col">
+          <h5><?= e($label) ?></h5>
+          <ul class="link-list">
+            <?php foreach ($by_cat[$key] as $s): ?>
+              <li><a href="<?= e(url('/' . $s['slug'])) ?>"><?= e($s['title']) ?></a></li>
+            <?php endforeach; ?>
+            <li><a href="<?= e(url('/services#' . $key)) ?>"><strong>More →</strong></a></li>
+          </ul>
+        </div>
+      <?php endforeach; ?>
+    </div>
   </div>
 
   <div class="site-footer__bottom">
     <div class="container">
       <p>&copy; <?= date('Y') ?> <?= e(setting('business_name')) ?> · PSA License <?= e(setting('psa_license')) ?> · All rights reserved.</p>
-      <p><a href="<?= e(url('/privacy')) ?>">Privacy</a> · <a href="<?= e(url('/terms')) ?>">Terms</a></p>
+      <p><a href="<?= e(url('/pricing')) ?>">Pricing</a> · <a href="<?= e(url('/privacy')) ?>">Privacy</a> · <a href="<?= e(url('/terms')) ?>">Terms</a></p>
     </div>
   </div>
 </footer>

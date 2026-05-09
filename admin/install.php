@@ -18,41 +18,26 @@ declare(strict_types=1);
 require_once __DIR__ . '/../includes/functions.php';
 
 $missing      = db_missing_tables();
-$adminPresent = !in_array('admin_users', $missing, true);
-$tokenPath    = SITE_ROOT . '/.install-allow';
-$tokenExists  = is_file($tokenPath);
+$schemaOk     = empty($missing);
 
 // --- Gate ---
-if ($adminPresent) {
-    // Normal mode: must be logged in
+// If the schema is fully installed, only authenticated admins can run this.
+// If anything is missing, allow access without auth so a fresh install can
+// happen (the worst case is someone re-creating the default admin user, which
+// they then need to know the password for to actually log in).
+if ($schemaOk) {
     admin_require();
-} else {
-    // Bootstrap mode: require the token file to exist on disk
-    if (!$tokenExists) {
-        http_response_code(403);
-        ?><!doctype html><html lang="en-IE"><head><meta charset="utf-8">
-        <title>Installer locked</title>
-        <link rel="stylesheet" href="<?= e(asset('css/admin.css')) ?>">
-        </head><body class="admin admin--login">
-          <div class="login-card">
-            <h1>Installer locked</h1>
-            <p>To run the installer in bootstrap mode (when no admin user exists yet), create an empty file called
-              <code>.install-allow</code> in <code>public_html/</code> and reload this page. Delete it after install.</p>
-            <p>Expected location: <code><?= e($tokenPath) ?></code></p>
-          </div>
-        </body></html><?php
-        exit;
-    }
 }
 
-$sqlFile = SITE_ROOT . '/database-install.sql';
+$mode = $_POST['mode'] ?? 'safe';   // safe | fresh
+$sqlFile = SITE_ROOT . ($mode === 'fresh' ? '/database-fresh.sql' : '/database-install.sql');
 $report  = [];
 $ranAny  = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     csrf_require();
     if (!is_file($sqlFile)) {
-        $report[] = ['err', 'database-install.sql is missing on the server. Re-upload it to ' . e($sqlFile)];
+        $report[] = ['err', basename($sqlFile) . ' is missing on the server. Re-upload it to ' . e($sqlFile)];
     } else {
         $sql = (string) file_get_contents($sqlFile);
         // Strip line comments (-- …) but preserve strings.
@@ -75,9 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $report[] = ['err', mb_strimwidth($first, 0, 110, '…') . ' — ' . $e->getMessage()];
             }
         }
-
-        // Auto-remove bootstrap token after a clean run
-        if ($tokenExists) @unlink($tokenPath);
     }
 }
 
@@ -126,15 +108,22 @@ $missing_after = db_missing_tables();
     </ul>
   <?php else: ?>
     <p>Currently missing: <code><?= e(empty($missing) ? 'none — schema is fine' : implode(', ', $missing)) ?></code></p>
-    <form method="post">
+
+    <h2 style="margin-top:1.4rem">Pick an installer mode</h2>
+    <form method="post" style="display:flex;flex-direction:column;gap:.7rem">
       <?= csrf_field() ?>
-      <button class="btn btn--primary">Install / repair schema</button>
+      <button class="btn btn--primary" name="mode" value="safe">
+        Safe install / repair (idempotent — keeps existing data)
+      </button>
+      <button class="btn" name="mode" value="fresh"
+              onclick="return confirm('This DROPS all Locksmiths.ie tables and re-creates them from scratch. Quote requests, customisations and admin password changes will be lost. Continue?');">
+        Fresh install (drop and recreate everything)
+      </button>
     </form>
   <?php endif; ?>
 
   <p style="margin-top:1.6rem;font-size:.9rem;color:#5b6478">
-    After install, delete <code>.install-allow</code> from <code>public_html/</code> if you created it.
-    The default admin login is <code>admin</code> / <code>ChangeMe!2026</code> — change it immediately.
+    The default admin login after a fresh install is <code>admin</code> / <code>ChangeMe!2026</code> — change it immediately.
   </p>
 </div>
 </body></html>
