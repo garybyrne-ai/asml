@@ -29,7 +29,7 @@ require __DIR__ . '/../includes/hero.php';
     <ul>
       <li><strong>20-minute response</strong> across Dublin city &amp; county. Our average on-site arrival time inside the M50 is fifteen minutes.</li>
       <li><strong>Fixed-price quotes</strong> — agreed up front before any work starts. The minimum job price is €90 and there is no separate call-out fee added on top. See our <a href="<?= e(url('/pricing')) ?>">price list</a> for every common job.</li>
-      <li><strong>12-month written guarantee</strong> on all parts and labour, backed by a real Dublin business with a real address.</li>
+      <li><strong>12-month guarantee</strong> on all parts and labour, backed by a real Dublin business with a real address.</li>
       <li><strong>Insurance-approved reports</strong> for every burglary repair — the kind your insurance handler actually accepts.</li>
       <li><strong>British Standard everything</strong> — BS3621 5-lever mortices, TS007 3-star anti-snap cylinders, IS EN 1125 panic hardware. We carry every common one on the van.</li>
     </ul>

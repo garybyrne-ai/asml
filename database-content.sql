@@ -141,7 +141,7 @@ UPDATE `locations` SET `body` = '
   <li>Master-key suite installations for the Sandyford business park offices</li>
 </ul>
 <h3>Local 24/7 — phone is always answered</h3>
-<p><a href="tel:+35318782720">(01) 878 2720</a> is a real Dublin landline. It rings at our office and is answered by a member of our team day and night, including Christmas Day. Minimum job price across D18 is €90 fixed up front, with a 12-month written guarantee on every cylinder, mechanism or smart lock we fit.</p>
+<p><a href="tel:+35318782720">(01) 878 2720</a> is a real Dublin landline. It rings at our office and is answered by a member of our team day and night, including Christmas Day. Minimum job price across D18 is €90 fixed up front, with a 12-month guarantee on every cylinder, mechanism or smart lock we fit.</p>
 '
 WHERE `slug` = 'locksmith-dublin-18';
 
@@ -193,7 +193,7 @@ UPDATE `locations` SET `body` = '
   <li>Anti-snap upgrades on Rathcoole village family homes</li>
 </ul>
 <h3>Always-on local landline</h3>
-<p>Same number, same Dublin team — <a href="tel:+35318782720">(01) 878 2720</a>. Local 01 landline, no surcharge, no overseas redirect. Minimum job price €90 fixed up front, 12-month written guarantee on every job.</p>
+<p>Same number, same Dublin team — <a href="tel:+35318782720">(01) 878 2720</a>. Local 01 landline, no surcharge, no overseas redirect. Minimum job price €90 fixed up front, 12-month guarantee on every job.</p>
 '
 WHERE `slug` = 'locksmith-saggart';
 
@@ -271,7 +271,7 @@ UPDATE `locations` SET `body` = '
   <li>Anti-snap cylinder upgrades after attempted break-ins</li>
   <li>Marlay Park event-night car lockouts</li>
 </ul>
-<p>Response time across Rathfarnham is typically 15–20 minutes from our south-Dublin van. Local 01 landline answered by a real person, day or night: <a href="tel:+35318782720">(01) 878 2720</a>. Minimum job price €90 fixed up front, with a written 12-month guarantee on every cylinder, mechanism or lock we fit.</p>
+<p>Response time across Rathfarnham is typically 15–20 minutes from our south-Dublin van. Local 01 landline answered by a real person, day or night: <a href="tel:+35318782720">(01) 878 2720</a>. Minimum job price €90 fixed up front, with a 12-month guarantee on every cylinder, mechanism or lock we fit.</p>
 '
 WHERE `slug` = 'locksmith-rathfarnham';
 
@@ -510,7 +510,7 @@ UPDATE `services` SET `body` = '
 </ul>
 
 <h3>What is included</h3>
-<p>Supply and fit the lock, configure the app, set up auto-lock and auto-unlock, configure family / housemate codes, integrate with smart-home systems, and 12-month written guarantee on parts and labour.</p>
+<p>Supply and fit the lock, configure the app, set up auto-lock and auto-unlock, configure family / housemate codes, integrate with smart-home systems, and 12-month guarantee on parts and labour.</p>
 
 <h3>Pricing</h3>
 <p>Yale Conexis L2 supplied and fitted: from <strong>€330</strong>. Nuki 4.0 supplied and fitted: from <strong>€280</strong>. Other models on quote. <a href="/pricing">See the full price list →</a></p>

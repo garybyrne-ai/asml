@@ -77,7 +77,7 @@ require __DIR__ . '/../includes/header.php';
 
     <div class="content" style="margin-top:3rem">
       <h2>What you''re paying for</h2>
-      <p>Behind every price on this list is a fully PSA-licensed technician with a fully-stocked van — not a sub-contractor bid via an online lead-auction. Every cylinder we fit is certified to British Standard (BS3621 5-lever, TS007 3-star anti-snap), every part is sourced from a recognised supplier and every job carries a written 12-month guarantee on parts and labour.</p>
+      <p>Behind every price on this list is a fully PSA-licensed technician with a fully-stocked van — not a sub-contractor bid via an online lead-auction. Every cylinder we fit is certified to British Standard (BS3621 5-lever, TS007 3-star anti-snap), every part is sourced from a recognised supplier and every job carries a 12-month guarantee on parts and labour.</p>
 
       <h2>Why we don''t do "free call-outs"</h2>
       <p>You will see ads from other companies advertising "no call-out fee — pay only for the work". In practice the work then arrives priced 2–3× higher than market rate to absorb the call-out cost. We prefer to be honest: the minimum price for any job is €90, that includes the visit, and the price for everything else on the list is exactly what you''ll pay.</p>

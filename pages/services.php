@@ -28,7 +28,7 @@ require __DIR__ . '/../includes/hero.php';
 
 <section class="section">
   <div class="container container--narrow content">
-    <p class="lead">Locksmiths.ie covers every common locksmith job a Dublin home, business or driver might need — from a 3am lockout to a master-key system across multiple offices. Every job is quoted at a fixed price before we start, every part fitted is to British Standard or higher, and every job carries a written 12-month guarantee.</p>
+    <p class="lead">Locksmiths.ie covers every common locksmith job a Dublin home, business or driver might need — from a 3am lockout to a master-key system across multiple offices. Every job is quoted at a fixed price before we start, every part fitted is to British Standard or higher, and every job carries a 12-month guarantee.</p>
     <p>The list below is grouped by category. Click any service to read details, see typical pricing and book online — or just call our local 01 landline <a href="tel:<?= e(setting('phone_e164')) ?>"><?= e(setting('phone')) ?></a> for a fixed price over the phone.</p>
   </div>
 </section>

@@ -23,7 +23,7 @@ require __DIR__ . '/../includes/hero.php';
 <section class="section">
   <div class="container container--narrow content">
     <p class="lead">If you''re locked out in Dublin right now, the fastest way to get back inside is to ring our <strong>local 01 landline (01) 878 2720</strong> — answered every minute of every day by a real member of our Dublin team. PSA-licensed, fixed price agreed before we leave the depot, average on-site arrival of fifteen to twenty minutes inside the M50.</p>
-    <p>We do everything a Dublin household, business or driver might need from a locksmith — emergency lockouts, lock changes, anti-snap upgrades, UPVC mechanism repair, smart-lock installation, on-site car-key cutting, master-key suites and burglary repair with insurance reports. Every job carries a written 12-month guarantee on parts and labour.</p>
+    <p>We do everything a Dublin household, business or driver might need from a locksmith — emergency lockouts, lock changes, anti-snap upgrades, UPVC mechanism repair, smart-lock installation, on-site car-key cutting, master-key suites and burglary repair with insurance reports. Every job carries a 12-month guarantee on parts and labour.</p>
   </div>
 </section>
 
@@ -51,7 +51,7 @@ require __DIR__ . '/../includes/hero.php';
       <article class="why-card">
         <div class="why-card__icon">✓</div>
         <h3>12-Month Guarantee</h3>
-        <p>All workmanship and parts guaranteed for a full year — in writing.</p>
+        <p>All workmanship and parts guaranteed for a full year.</p>
       </article>
     </div>
   </div>
