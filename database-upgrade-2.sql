@@ -691,3 +691,36 @@ INSERT IGNORE INTO `faqs` (`question`,`answer`,`is_global`,`sort_order`) VALUES
  'Yes — for the vast majority of vehicles we can read the immobiliser, cut a new blade and program a fresh transponder on-site.', 1, 7),
 ('Are you insurance-compliant?',
  'Yes. We fit cylinders and mechanisms certified to BS3621 / TS007 3-star, which is what most Irish home insurance policies require.', 1, 8);
+
+-- =====================================================================
+-- Pricing list (added in upgrade #2.1)
+-- =====================================================================
+CREATE TABLE IF NOT EXISTS `pricing_items` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `label` VARCHAR(200) NOT NULL,
+  `price_text` VARCHAR(60) NOT NULL,
+  `price_from` DECIMAL(8,2) DEFAULT NULL,
+  `note` VARCHAR(200) DEFAULT NULL,
+  `is_active` TINYINT(1) NOT NULL DEFAULT 1,
+  `sort_order` INT NOT NULL DEFAULT 0,
+  `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `idx_pricing_active` (`is_active`)
+) ENGINE=InnoDB;
+
+INSERT IGNORE INTO `pricing_items` (`label`, `price_text`, `price_from`, `note`, `sort_order`) VALUES
+('Match Prices — Home & Commercial Lockouts', '€95',         95.00,  'Non-destructive entry, no damage in 95% of cases.', 1),
+('Anti Snap Cylinder Installation',           '€115',        115.00, 'TS007 3-star anti-snap cylinder fitted.',          2),
+('5 Lever Dead Lock Installation',            '€125',        125.00, 'BS3621 5-lever — insurance compliant.',            3),
+('Multipoint Lock Installation',              '€175 – €245', 175.00, 'Price depends on door / mechanism (UPVC, composite).', 4),
+('Dead Locking Nightlatch Installation',      '€128',        128.00, 'BS3621 deadlocking nightlatch.',                   5),
+('Traditional Night Latch Installation',      '€98',         98.00,  'Yale-style classic night latch.',                  6),
+('Window Locks for PVC or Timber Windows',    '€15',         15.00,  'Per lock. Bulk discounts on whole-house jobs.',    7),
+('Restricting Bolt for Patio Doors',          '€105',        105.00, 'Anti-lift restrictor for sliding patio doors.',    8);
+
+-- Pricing-related settings
+INSERT INTO `settings` (`setting_key`,`setting_value`) VALUES
+('minimum_price',     '€90'),
+('callout_policy',    'Minimum job price €90. We do not offer free call-outs.'),
+('pricing_intro',     'Indicative prices for the most common Dublin locksmith jobs. Final quote is fixed before any work begins — no surprises.')
+ON DUPLICATE KEY UPDATE `setting_value` = VALUES(`setting_value`);

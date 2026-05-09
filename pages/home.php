@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../includes/functions.php';
 
 $page_title       = 'Emergency Locksmith Dublin — 20-Min Response, PSA Licensed';
-$page_description = 'Locked out in Dublin? PSA-licensed emergency locksmith on-site in 20 minutes. No call-out fee. 24/7. ' . setting('phone');
+$page_description = 'Locked out in Dublin? PSA-licensed emergency locksmith on-site in 20 minutes. Fixed prices from ' . setting('minimum_price', '€90') . '. 24/7. ' . setting('phone');
 $page_focus_kw    = 'emergency locksmith dublin';
 $page_canonical   = build_canonical('/');
 
@@ -38,8 +38,8 @@ require __DIR__ . '/../includes/hero.php';
       </article>
       <article class="why-card">
         <div class="why-card__icon">€</div>
-        <h3>No Call-Out Fee</h3>
-        <p>Fixed price quoted before we start. No hidden charges, no surprises, ever.</p>
+        <h3>Fixed Price Quotes</h3>
+        <p>Transparent <a href="<?= e(url('/pricing')) ?>">price list</a>. Fixed quote agreed before we start — no surprises.</p>
       </article>
       <article class="why-card">
         <div class="why-card__icon">✓</div>

@@ -20,6 +20,7 @@ unset($_SESSION['flash']);
     <a href="<?= e(url('/admin/index.php')) ?>">Dashboard</a>
     <a href="<?= e(url('/admin/services.php')) ?>">Services</a>
     <a href="<?= e(url('/admin/locations.php')) ?>">Locations</a>
+    <a href="<?= e(url('/admin/pricing.php')) ?>">Pricing</a>
     <a href="<?= e(url('/admin/testimonials.php')) ?>">Testimonials</a>
     <a href="<?= e(url('/admin/faqs.php')) ?>">FAQs</a>
     <a href="<?= e(url('/admin/quotes.php')) ?>">Quote Requests</a>

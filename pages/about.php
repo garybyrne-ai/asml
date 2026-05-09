@@ -23,7 +23,7 @@ require __DIR__ . '/../includes/hero.php';
     <h2>Our promises</h2>
     <ul>
       <li><strong>20-minute response</strong> across Dublin city &amp; county.</li>
-      <li><strong>No call-out fee</strong> — fixed price quoted up front.</li>
+      <li><strong>Fixed-price quotes</strong> — agreed up front before any work starts. See our <a href="<?= e(url('/pricing')) ?>">price list</a>.</li>
       <li><strong>12-month guarantee</strong> on all parts and labour.</li>
       <li><strong>Insurance-approved</strong> reports for burglary repair work.</li>
     </ul>

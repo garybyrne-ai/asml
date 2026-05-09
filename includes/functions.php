@@ -149,6 +149,14 @@ function get_locations(?string $region = null): array
 /**
  * @return array<int,array<string,mixed>>
  */
+function get_pricing_items(): array
+{
+    return db_all('SELECT * FROM pricing_items WHERE is_active = 1 ORDER BY sort_order, id');
+}
+
+/**
+ * @return array<int,array<string,mixed>>
+ */
 function get_testimonials(int $limit = 25, bool $featured_only = false): array
 {
     $sql = 'SELECT * FROM testimonials WHERE is_active = 1';

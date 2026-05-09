@@ -28,7 +28,7 @@ $response= setting('response_time', '20-30 minutes');
       <div class="hero__badges">
         <span class="badge badge--gold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2 4 5v6c0 5 3.4 9.5 8 11 4.6-1.5 8-6 8-11V5l-8-3z"/></svg> PSA Licensed</span>
         <span class="badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> <?= e($response) ?> arrival</span>
-        <span class="badge">No call-out fee</span>
+        <span class="badge">Fixed prices</span>
         <span class="badge">12-month guarantee</span>
       </div>
 

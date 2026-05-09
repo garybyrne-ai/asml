@@ -2,7 +2,7 @@
 require_once __DIR__ . '/functions.php';
 
 $page_title       = $page_title       ?? null;
-$page_description = $page_description ?? 'PSA-licensed Dublin locksmith. 20-minute response, 24/7 emergency lockouts, no call-out fee, 12-month guarantee.';
+$page_description = $page_description ?? 'PSA-licensed Dublin locksmith. 20-minute response, 24/7 emergency lockouts, fixed-price quotes, 12-month guarantee.';
 $page_canonical   = $page_canonical   ?? build_canonical($_SERVER['REQUEST_URI'] ?? '/');
 $page_focus_kw    = $page_focus_kw    ?? '';
 $schema_blocks    = $schema_blocks    ?? [];
@@ -26,6 +26,7 @@ function nav_icon(string $name): string
         'home'      => '<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>',
         'services'  => '<circle cx="8" cy="15" r="3"/><path d="M10.5 12.5l8-8a2.83 2.83 0 1 1 4 4l-8 8"/><path d="M16.5 6.5l4 4"/>',
         'locations' => '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+        'pricing'   => '<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
         'about'     => '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><circle cx="12" cy="8" r="1.2" fill="currentColor"/>',
         'reviews'   => '<polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>',
         'contact'   => '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>',
@@ -33,7 +34,7 @@ function nav_icon(string $name): string
     return $base . ($paths[$name] ?? '') . '</svg>';
 }
 
-$asset_v = '20260509b';   // cache-bust
+$asset_v = '20260509c';   // cache-bust
 ?>
 <!doctype html>
 <html lang="en-IE">
@@ -139,6 +140,7 @@ if ($breadcrumbs) echo schema_breadcrumbs($breadcrumbs);
           </div>
         </li>
 
+        <li><a href="<?= e(url('/pricing')) ?>"><?= nav_icon('pricing') ?><span>Pricing</span></a></li>
         <li><a href="<?= e(url('/about')) ?>"><?= nav_icon('about') ?><span>About</span></a></li>
         <li><a href="<?= e(url('/reviews')) ?>"><?= nav_icon('reviews') ?><span>Reviews</span></a></li>
         <li><a href="<?= e(url('/contact')) ?>"><?= nav_icon('contact') ?><span>Contact</span></a></li>
@@ -154,7 +156,7 @@ if ($breadcrumbs) echo schema_breadcrumbs($breadcrumbs);
     <div class="container">
       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> PSA Licensed <?= e($psa) ?></span>
       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> <?= e($response) ?> arrival</span>
-      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> No call-out fee</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Fixed prices from <?= e(setting('minimum_price', '€90')) ?></span>
       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 12-month guarantee</span>
     </div>
   </div>

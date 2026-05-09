@@ -8,7 +8,7 @@ $landmark2 = $location['landmark_secondary'] ?? '';
 $lname     = $location['name'];
 
 $page_title       = $location['meta_title']       ?: ('Locksmith ' . $lname . ' | 20-Min Response');
-$page_description = $location['meta_description'] ?: ('PSA licensed locksmith covering ' . $lname . ($landmark1 ? ' near ' . $landmark1 : '') . '. 20-minute response, no call-out fee, 24/7.');
+$page_description = $location['meta_description'] ?: ('PSA licensed locksmith covering ' . $lname . ($landmark1 ? ' near ' . $landmark1 : '') . '. 20-minute response, fixed-price quotes, 24/7.');
 $page_focus_kw    = $location['focus_keyword']    ?? '';
 $page_canonical   = $location['canonical_url']    ?: build_canonical('/' . $location['slug']);
 

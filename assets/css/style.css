@@ -355,6 +355,43 @@ p  { margin: 0 0 1em; }
 .site-footer .social-list a { background: rgba(255,255,255,.08); color:#fff; border-color: rgba(255,255,255,.15); }
 .site-footer .social-list a:hover { background: var(--c-orange); border-color: var(--c-orange); }
 
+/* ---------- Pricing table ---------- */
+.pricing-table {
+  background:#fff; border:1px solid var(--c-border); border-radius: var(--radius-lg);
+  overflow:hidden; box-shadow: var(--shadow-sm); margin: 1.4rem 0 1rem;
+}
+.pricing-table__head, .pricing-table__row {
+  display:grid; grid-template-columns: 1.7fr .8fr auto;
+  gap: 1rem; align-items:center;
+  padding: 1rem 1.2rem;
+}
+.pricing-table__head {
+  background: var(--c-navy); color:#fff; font-weight:700; font-family:'Outfit',sans-serif;
+  font-size:.92rem; letter-spacing:.02em; text-transform:uppercase;
+}
+.pricing-table__row + .pricing-table__row { border-top: 1px solid var(--c-border); }
+.pricing-table__row:hover { background: var(--c-bg-alt); }
+.pricing-table__row strong { color: var(--c-navy); display:block; }
+.pricing-table__row small { color: var(--c-muted); display:block; margin-top:.15rem; font-size:.85rem; }
+.pricing-table__price { font-family:'Outfit',sans-serif; font-weight:800; color: var(--c-orange); font-size:1.3rem; }
+.pricing-table__cta { text-align:right; }
+.btn--sm { padding:.5rem .9rem; font-size:.88rem; border-radius:8px; }
+
+.pricing-callout {
+  background: linear-gradient(135deg, #fff8ec, #fff);
+  border:1px solid var(--c-orange); border-left-width:4px;
+  padding: 1rem 1.2rem; border-radius: var(--radius);
+  font-size: 1rem; color: var(--c-navy); margin: 1.4rem 0 0;
+}
+.pricing-callout strong { color: var(--c-orange-dark); }
+
+@media (max-width: 720px) {
+  .pricing-table__head { display:none; }
+  .pricing-table__row { grid-template-columns: 1fr; gap:.4rem; padding: 1rem; }
+  .pricing-table__price { font-size:1.4rem; }
+  .pricing-table__cta { text-align:left; }
+}
+
 /* ---------- Floating buttons (mobile-first) ---------- */
 .float-call, .float-wa {
   position:fixed; right: 1rem; width: 56px; height:56px; border-radius:50%;
