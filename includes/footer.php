@@ -5,9 +5,18 @@
   <div class="container site-footer__top">
 
     <div class="site-footer__brand">
-      <img src="<?= e(asset('images/locksmiths-ie-logo-white.svg')) ?>"
-           alt="Locksmiths.ie" class="site-footer__logo" width="240" height="60">
-      <p>PSA-licensed Dublin locksmith. Emergency lockouts, lock changes, burglary repairs and smart-lock installation across Dublin and the Greater Dublin Area.</p>
+      <?php
+        $footerLogo = setting('footer_logo') ?: setting('logo');
+        if ($footerLogo):
+            $logoSrc = preg_match('~^https?://~', $footerLogo) ? $footerLogo : (SITE_URL . $footerLogo);
+      ?>
+        <a href="<?= e(SITE_URL) ?>" aria-label="Locksmiths.ie home">
+          <img src="<?= e($logoSrc) ?>"
+               alt="Locksmiths.ie" class="site-footer__logo"
+               width="240" height="auto" loading="lazy">
+        </a>
+      <?php endif; ?>
+      <p><?= e(setting('footer_about', 'PSA-licensed Dublin locksmith. Emergency lockouts, lock changes, burglary repairs and smart-lock installation across Dublin and the Greater Dublin Area.')) ?></p>
       <p class="psa-badge"><strong>PSA License:</strong> <?= e(setting('psa_license')) ?></p>
     </div>
 
@@ -86,7 +95,15 @@
 
   <div class="site-footer__bottom">
     <div class="container">
-      <p>&copy; <?= date('Y') ?> <?= e(setting('business_name')) ?> · PSA License <?= e(setting('psa_license')) ?> · All rights reserved.</p>
+      <?php
+        $copy = setting('copyright_text', '© {year} {business} · PSA License {psa} · All rights reserved.');
+        $copy = strtr($copy, [
+            '{year}'     => date('Y'),
+            '{business}' => setting('business_name'),
+            '{psa}'      => setting('psa_license'),
+        ]);
+      ?>
+      <p><?= e($copy) ?></p>
       <p><a href="<?= e(url('/pricing')) ?>">Pricing</a> · <a href="<?= e(url('/privacy')) ?>">Privacy</a> · <a href="<?= e(url('/terms')) ?>">Terms</a></p>
     </div>
   </div>

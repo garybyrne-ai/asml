@@ -135,6 +135,7 @@ p  { margin: 0 0 1em; }
 .nav-toggle span { display:block; width:26px; height:3px; background:var(--c-navy); border-radius:2px; }
 
 .header-call {
+  position: relative;
   display: inline-flex; align-items:center; gap: .55rem;
   background: var(--c-red); color:#fff;
   padding: .55rem 1.1rem .6rem; border-radius: 999px;
@@ -142,6 +143,7 @@ p  { margin: 0 0 1em; }
   box-shadow: 0 8px 18px rgba(214,50,42,.35);
   white-space: nowrap;
   flex: 0 0 auto;
+  animation: pulse 1.7s ease-out infinite;
 }
 .header-call:hover { background: var(--c-red-dark); color:#fff; }
 .header-call > * { white-space: nowrap; }
@@ -308,6 +310,14 @@ p  { margin: 0 0 1em; }
 
 /* ---------- CTA banner ---------- */
 .cta-banner { display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap; }
+.cta-banner .btn--lg[href^="tel:"] {
+  position: relative;
+  animation: pulse 1.7s ease-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .header-call,
+  .cta-banner .btn--lg[href^="tel:"] { animation: none; }
+}
 
 /* ---------- Breadcrumbs ---------- */
 .breadcrumbs { padding: 1rem 0 0; }
@@ -321,14 +331,22 @@ p  { margin: 0 0 1em; }
 .content .lead { font-size:1.15rem; color: var(--c-muted); }
 
 /* ---------- Footer ---------- */
-.site-footer { background: var(--c-navy); color: #cfd6e4; padding: 3rem 0 0; margin-top:3rem; }
+.site-footer {
+  background: #1f1f1f;
+  color: #cfd6e4;
+  padding: 3rem 0 0;
+  margin-top: 0;
+}
 .site-footer h4 { color:#fff; font-size:1.05rem; margin: 0 0 1.4rem; padding-bottom:.6rem;
   font-family:'Share Tech', 'Public Sans', system-ui, sans-serif; letter-spacing:.04em; text-transform:uppercase;
   border-bottom:2px solid var(--c-orange); display:inline-block; }
 .site-footer h5 { color:#fff; font-size:.95rem; margin: 0 0 1.2rem; padding-bottom:.45rem;
   font-family:'Share Tech', 'Public Sans', system-ui, sans-serif; letter-spacing:.06em; text-transform:uppercase;
   border-bottom:2px solid var(--c-orange); display:inline-block; }
-.site-footer__logo { background:#fff; padding:.4rem .6rem; border-radius:10px; max-width:240px; height:auto; }
+.site-footer__logo {
+  display:block; max-width:240px; height:auto; margin:0 0 1rem;
+  /* No white box — let the logo's own art define its background */
+}
 
 /* Row 1: brand + contact + locations */
 .site-footer__top {

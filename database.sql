@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `locations` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `slug` VARCHAR(160) NOT NULL,
   `name` VARCHAR(120) NOT NULL,
-  `region` ENUM('dublin_city','dublin_county','kildare','meath','wicklow') NOT NULL DEFAULT 'dublin_city',
+  `region` VARCHAR(40) NOT NULL DEFAULT 'dublin_city',
   `district_code` VARCHAR(10) DEFAULT NULL,
   `landmark` VARCHAR(200) DEFAULT NULL,
   `landmark_secondary` VARCHAR(200) DEFAULT NULL,
@@ -2641,3 +2641,227 @@ ALTER TABLE `testimonials`    CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_u
 ALTER TABLE `faqs`            CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE `quote_requests`  CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ALTER TABLE `pricing_items`   CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- =====================================================================
+-- 9 May 2026 — Van Slam Locks service + nearby-counties locations +
+-- footer settings.
+-- =====================================================================
+
+INSERT INTO `settings` (`setting_key`,`setting_value`) VALUES
+('footer_logo',     '/assets/images/logo.webp'),
+('footer_about',    'PSA-licensed Dublin locksmith. Emergency lockouts, lock changes, burglary repairs, smart-lock installation and van slam-lock fitting across Dublin and the wider east-coast counties. We answer the local 01 landline 24 hours a day.'),
+('copyright_text',  '© {year} {business} · PSA License {psa} · All rights reserved.')
+ON DUPLICATE KEY UPDATE `setting_value` = VALUES(`setting_value`);
+
+-- ----- Dedicated Van Slam Locks service -----
+INSERT IGNORE INTO `services`
+  (`slug`,`title`,`category`,`short_description`,`body`,`icon`,`meta_title`,`meta_description`,`focus_keyword`,`price_from`,`sort_order`) VALUES
+('van-slam-locks-installation', 'Van Slam Locks Installation', 'commercial',
+ 'Slam locks, hooks and deadlocks fitted to Sprinter, Transit, Crafter, Master and Vivaro vans across Dublin and nearby counties.',
+ '',
+ 'truck',
+ 'Van Slam Locks Installation Dublin & Nearby Counties',
+ 'Van slam locks, hooks and deadlocks fitted on-site for tradesmen across Dublin, Kildare, Meath, Louth, Wicklow, Wexford and Cork. PSA licensed, fixed price.',
+ 'van slam locks installation', 180.00, 90);
+
+UPDATE `services` SET `body` = '
+<p>Van slam locks are the single biggest deterrent against opportunist tool theft. A standard factory-fit van lock can be defeated in seconds by a determined thief with a flat-head screwdriver. A slam lock engages automatically the second the door closes — there''s no key to forget, no central-locking signal that can be jammed, and no exposed cylinder face for a thief to attack.</p>
+
+<p>We fit slam locks, deadlocks, hooks and anti-peel reinforcement plates on-site at your home, depot or job address — usually inside 90 minutes per van. PSA licensed, fixed price agreed before we travel, twelve-month guarantee on every fitting.</p>
+
+<h3>Vans we fit slam locks to</h3>
+<ul>
+  <li>Mercedes-Benz Sprinter (all generations, 2006 onwards)</li>
+  <li>Ford Transit, Transit Custom, Transit Connect</li>
+  <li>Volkswagen Crafter, Transporter (T5, T6, T6.1)</li>
+  <li>Renault Master, Trafic, Kangoo</li>
+  <li>Vauxhall / Opel Vivaro, Movano, Combo</li>
+  <li>Peugeot Boxer, Expert, Partner</li>
+  <li>Citroën Relay, Dispatch, Berlingo</li>
+  <li>Iveco Daily</li>
+  <li>Fiat Ducato, Doblo</li>
+  <li>Toyota ProAce, Hiace</li>
+  <li>Nissan NV200, NV400, Primastar</li>
+</ul>
+
+<h3>What we fit and why</h3>
+<ul>
+  <li><strong>Slam locks (×1 per door)</strong> — engage automatically when the door closes. Cab, side load and rear barn doors all available.</li>
+  <li><strong>Deadlocks (×1 per door)</strong> — second locking point above the factory lock, key-operated, defeats the rip-cord and lock-bumping methods.</li>
+  <li><strong>Hooks</strong> — secondary catches that engage at the top and bottom of the door, removing the leverage point a thief uses to peel the door open.</li>
+  <li><strong>Anti-peel plates</strong> — reinforce the door edge and frame to stop "peel" attacks.</li>
+  <li><strong>Internal partition locks</strong> — separate the cab from the cargo area so a thief who breaks into the cab can''t reach the tools.</li>
+  <li><strong>Replacement keys and fobs</strong> — cut and programmed on-site if you''ve lost yours.</li>
+</ul>
+
+<h3>How long the fitting takes</h3>
+<p>A single slam lock takes about 45 minutes per door, including drilling the door skin, fitting the lock body, lining up the keep, and testing. A typical tradesman van — slam locks on the side load and rear barn doors plus a deadlock on each — is finished inside two hours. We work at your home, your depot, or any job site you can leave the van for the morning.</p>
+
+<h3>Where we travel</h3>
+<p>Our van slam-lock service covers all of Dublin city and county and the nearby east-coast and midland counties: <strong>Kildare, Meath, Louth, Wicklow, Wexford, Carlow, Westmeath, Laois, Offaly, Cavan, Monaghan</strong> and on-request as far as <strong>Cork, Limerick, Galway, Waterford</strong> for fleets of three or more vans. We''ll quote a fixed all-in price including travel before we leave Dublin.</p>
+
+<h3>Pricing</h3>
+<ul>
+  <li>Single slam lock supplied and fitted: <strong>from €180 per door</strong></li>
+  <li>Slam lock + deadlock combo per door: <strong>from €260 per door</strong></li>
+  <li>Full van pack (slam locks + deadlocks + hooks on three doors): <strong>from €750 fitted</strong></li>
+  <li>Fleets of 3+ vans: <strong>discounted, quoted on the phone</strong></li>
+</ul>
+<p><a href="/pricing">See the full price list →</a></p>
+
+<h3>Brands we fit</h3>
+<p>Locks 4 Vans, Slamlocks Direct, Vanguard, Maple, Armaplate, Trade Vans Ireland — depending on van, brand and use case we''ll recommend the right combination. All UK and EU-spec, all sold-secure where applicable, all backed by manufacturer guarantee in addition to our 12-month fitting guarantee.</p>
+
+<h3>What we''ll need from you on the phone</h3>
+<ol>
+  <li>Make, model and year of the van</li>
+  <li>Which doors you want secured (cab / side load / rear barn / single rear)</li>
+  <li>Where you''d like the work done (home / depot / job site)</li>
+  <li>Any history with the van (insurance claim, attempted theft, prior fitting)</li>
+</ol>
+
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for a fixed-price quote. Local Dublin landline, real Dublin team, no premium-rate divert.</p>
+'
+WHERE `slug` = 'van-slam-locks-installation';
+
+-- ----- Nearby-counties locations -----
+INSERT IGNORE INTO `locations`
+  (`slug`,`name`,`region`,`landmark`,`landmark_secondary`,`intro`,`body`,
+   `latitude`,`longitude`,`meta_title`,`meta_description`,`focus_keyword`,`sort_order`) VALUES
+
+('locksmith-cork', 'Cork', 'cork',
+ 'Cork City Centre', 'Patrick Street',
+ 'Cork locksmith service — emergency lockouts, lock changes and on-site van slam-lock fitting across Cork city and county.',
+ '<p>Locksmiths.ie covers Cork city and county for our specialist services — primarily van slam-lock fitting for the trade fleets based around Little Island, Mahon, Carrigaline and the Cork docks. We also travel for fleet master-key suites, commercial security upgrades and high-spec residential anti-snap and BS3621 work.</p>
+<h3>What we cover in Cork</h3>
+<ul>
+  <li>Van slam-lock fitting (Sprinter, Transit, Crafter, Master, Vivaro)</li>
+  <li>Fleet master-key systems for Cork-area trade businesses</li>
+  <li>Anti-snap TS007 3-star cylinder upgrades</li>
+  <li>Multi-site commercial security audits</li>
+  <li>Insurance-grade BS3621 5-lever mortice fitting</li>
+</ul>
+<h3>How we work in Cork</h3>
+<p>Our travel rate is included in the fixed quote — no surprise top-up for the trip down the M8. We schedule Cork visits in batches (typically every 7–10 days) so the cost-per-job is comparable with a Cork-based locksmith for fleet work. For a single van or single house we''ll quote on the phone — sometimes it makes more sense to use a local Cork PSA-licensee, and we''ll say so honestly.</p>
+<p>Ring <a href="tel:+35318782720">(01) 878 2720</a> for a fixed-price quote.</p>',
+ 51.898514, -8.475603,
+ 'Locksmith Cork | Van Slam Locks & Fleet Security',
+ 'PSA-licensed locksmith service in Cork — van slam-lock fitting, fleet master-key suites and high-spec security upgrades. Fixed-price quotes including travel.',
+ 'locksmith cork', 70),
+
+('locksmith-louth', 'Louth', 'louth',
+ 'Drogheda', 'Dundalk',
+ 'Louth locksmith service — emergency response across Drogheda, Dundalk, Ardee and surrounding north-Leinster.',
+ '<p>Drogheda is 45 minutes from Dublin city centre on the M1; Dundalk is just over an hour. We cover both towns and surrounding north-Leinster — emergency lockouts, lock changes, multipoint mechanism repair on the modern UPVC and composite doors, anti-snap upgrades and van slam-lock fitting.</p>
+<h3>Common Louth jobs</h3>
+<ul>
+  <li>House lockouts in Drogheda, Dundalk and Ardee</li>
+  <li>Anti-snap cylinder upgrades on the post-2000 estates</li>
+  <li>UPVC multipoint gearbox repair</li>
+  <li>Commercial / retail emergency response on Drogheda West Street and Dundalk''s Park Street</li>
+  <li>Van slam-lock fitting at trade-base addresses</li>
+</ul>
+<p>Average response time from our north-Dublin van is 45–60 minutes to Drogheda, 60–80 minutes to Dundalk. Same fixed-price model as inside Dublin — ring <a href="tel:+35318782720">(01) 878 2720</a>.</p>',
+ 53.715000, -6.350000,
+ 'Locksmith Louth | Drogheda & Dundalk',
+ 'PSA-licensed locksmith service across Co. Louth — Drogheda, Dundalk, Ardee and surrounding north-Leinster. 24/7 response, fixed price.',
+ 'locksmith louth', 71),
+
+('locksmith-wexford', 'Wexford', 'wexford',
+ 'Wexford Town', 'Enniscorthy',
+ 'Wexford locksmith service — emergency response across Wexford town, Enniscorthy, Gorey and Rosslare.',
+ '<p>Wexford is around 90 minutes from Dublin via the M11. We cover the Wexford catchment for fleet van slam-lock fitting, commercial master-key work and emergency lockouts where a Dublin-based response is faster than waiting for a county locksmith.</p>
+<h3>Common Wexford jobs</h3>
+<ul>
+  <li>Holiday-home lock changes around Rosslare and Curracloe</li>
+  <li>Van slam-lock fitting for trade businesses around Wexford industrial estates</li>
+  <li>Anti-snap cylinder upgrades on the modern estates around Gorey and Enniscorthy</li>
+  <li>Holiday-let smart-lock fitting (Yale Conexis, Nuki) for short-term operators</li>
+</ul>
+<p>Ring <a href="tel:+35318782720">(01) 878 2720</a> for a fixed-price quote including travel from Dublin.</p>',
+ 52.336500, -6.463400,
+ 'Locksmith Wexford | Coastal South-East Service',
+ 'PSA-licensed locksmith service across Co. Wexford — Wexford town, Enniscorthy, Gorey, Rosslare. Fixed-price quotes including travel.',
+ 'locksmith wexford', 72),
+
+('locksmith-carlow', 'Carlow', 'carlow',
+ 'Carlow Town', 'Tullow',
+ 'Carlow locksmith service — emergency response and fleet van slam-lock fitting across Carlow town and surrounding south-Leinster.',
+ '<p>Carlow is 90 minutes from Dublin via the M9. We service the Carlow catchment primarily for van slam-lock fleet fitting and commercial master-key work.</p>
+<h3>Common Carlow jobs</h3>
+<ul>
+  <li>Van slam-lock fitting on tradesmen vans</li>
+  <li>Commercial security upgrades for SETU campus and Carlow business park</li>
+  <li>Multipoint mechanism repair on modern UPVC and composite doors</li>
+</ul>
+<p>Ring <a href="tel:+35318782720">(01) 878 2720</a> for a fixed-price quote including travel.</p>',
+ 52.836400, -6.934000,
+ 'Locksmith Carlow | South-Leinster Service',
+ 'PSA-licensed locksmith service across Co. Carlow — Carlow town, Tullow, Bagenalstown. Fixed-price quotes including travel.',
+ 'locksmith carlow', 73),
+
+('locksmith-westmeath', 'Westmeath', 'westmeath',
+ 'Mullingar', 'Athlone',
+ 'Westmeath locksmith service — emergency response across Mullingar, Athlone and surrounding Lakelands.',
+ '<p>Mullingar is 75 minutes from Dublin on the N4 / M4. Athlone is 90 minutes. We cover both for van slam-lock fitting, commercial security work and emergency lockouts where a Dublin-based response can beat a county locksmith.</p>
+<h3>Common Westmeath jobs</h3>
+<ul>
+  <li>Van slam-lock fitting on trade fleets around Mullingar and Athlone industrial estates</li>
+  <li>Anti-snap cylinder upgrades on the modern Mullingar estates</li>
+  <li>Commercial master-key suites for offices around the Athlone IT campus</li>
+</ul>
+<p>Ring <a href="tel:+35318782720">(01) 878 2720</a> for a fixed-price quote.</p>',
+ 53.526100, -7.339000,
+ 'Locksmith Westmeath | Mullingar & Athlone',
+ 'PSA-licensed locksmith service across Co. Westmeath — Mullingar, Athlone and surrounding Lakelands.',
+ 'locksmith westmeath', 74),
+
+('locksmith-galway', 'Galway', 'galway',
+ 'Galway City', 'Eyre Square',
+ 'Galway locksmith service — fleet van slam-lock fitting and commercial security work across Galway city and county.',
+ '<p>Galway is around 2 hours 15 minutes from Dublin on the M6. We travel for van slam-lock fleet fitting (3+ vans) and commercial master-key suite installations where the project warrants it. We''ll honestly recommend a local Galway PSA-licensee for single-job emergency callouts.</p>
+<h3>What we typically do in Galway</h3>
+<ul>
+  <li>Van slam-lock fleet installations (3+ vans, scheduled in batches)</li>
+  <li>Commercial master-key suites for offices and retail chains</li>
+  <li>Fleet-wide cylinder rekey for transport companies</li>
+</ul>
+<p>Ring <a href="tel:+35318782720">(01) 878 2720</a> for a fixed-price quote including travel from Dublin.</p>',
+ 53.270900, -9.056800,
+ 'Locksmith Galway | Fleet Van Slam Locks & Commercial',
+ 'Galway locksmith service — fleet van slam-lock fitting, commercial master-key suites. Fixed-price quotes including travel from Dublin.',
+ 'locksmith galway', 75),
+
+('locksmith-limerick', 'Limerick', 'limerick',
+ 'Limerick City', 'King John''s Castle',
+ 'Limerick locksmith service — fleet van slam-lock fitting and commercial security work.',
+ '<p>Limerick is 2 hours from Dublin on the M7. We travel for van slam-lock fleet fitting and commercial security projects.</p>
+<h3>What we cover</h3>
+<ul>
+  <li>Van slam-lock fleet installations (3+ vans, scheduled in batches)</li>
+  <li>Commercial master-key suites for offices and retail</li>
+  <li>Fleet-wide cylinder rekeys for transport businesses</li>
+</ul>
+<p>Ring <a href="tel:+35318782720">(01) 878 2720</a> for a fixed-price quote including travel.</p>',
+ 52.668200, -8.630500,
+ 'Locksmith Limerick | Fleet Van Slam Locks',
+ 'Limerick locksmith service — fleet van slam-lock fitting and commercial security work. Fixed-price quotes including travel.',
+ 'locksmith limerick', 76),
+
+('locksmith-waterford', 'Waterford', 'waterford',
+ 'Waterford City', 'The Quay',
+ 'Waterford locksmith service — fleet van slam-lock fitting and commercial security work across Waterford city and county.',
+ '<p>Waterford is 2 hours from Dublin on the M9. We travel for van slam-lock fleet fitting and commercial security projects.</p>
+<h3>What we cover</h3>
+<ul>
+  <li>Van slam-lock fleet installations</li>
+  <li>Commercial master-key suites</li>
+  <li>Fleet rekeys for transport and delivery companies</li>
+</ul>
+<p>Ring <a href="tel:+35318782720">(01) 878 2720</a> for a fixed-price quote including travel.</p>',
+ 52.259200, -7.110600,
+ 'Locksmith Waterford | Fleet Van Slam Locks',
+ 'Waterford locksmith service — fleet van slam-lock fitting and commercial security work.',
+ 'locksmith waterford', 77);
+
+-- Make sure existing nearby counties (Kildare / Meath / Wicklow) have a friendly region label
