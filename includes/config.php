@@ -33,12 +33,19 @@ defined('ENV')             || define('ENV', getenv('APP_ENV') ?: 'production');
 
 // ---- Session ----
 if (session_status() === PHP_SESSION_NONE) {
+    // Cloudways / most hosts terminate TLS at a proxy, so $_SERVER['HTTPS']
+    // is not always set. Trust X-Forwarded-Proto when it's present.
+    $isHttps =
+        (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ||
+        (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https')   ||
+        ((int)($_SERVER['SERVER_PORT'] ?? 0) === 443);
+
     session_name(SESSION_NAME);
     session_set_cookie_params([
         'lifetime' => 0,
         'path'     => '/',
         'domain'   => '',
-        'secure'   => isset($_SERVER['HTTPS']),
+        'secure'   => $isHttps,
         'httponly' => true,
         'samesite' => 'Lax',
     ]);
@@ -47,7 +54,10 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // ---- Error reporting ----
 if (ENV === 'production') {
-    error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
+    // E_STRICT is removed in PHP 8.4; only mask it when the constant exists.
+    $mask = E_ALL & ~E_DEPRECATED;
+    if (defined('E_STRICT')) $mask &= ~E_STRICT;
+    error_reporting($mask);
     ini_set('display_errors', '0');
     ini_set('log_errors', '1');
 } else {

@@ -2,18 +2,35 @@
 require_once __DIR__ . '/../includes/functions.php';
 admin_require();
 
+$safe_count = function (string $sql): int {
+    try { return (int)(db_one($sql)['c'] ?? 0); }
+    catch (Throwable $e) { error_log('[admin index] ' . $e->getMessage()); return 0; }
+};
 $counts = [
-    'services'     => (int)(db_one('SELECT COUNT(*) AS c FROM services')['c']     ?? 0),
-    'locations'    => (int)(db_one('SELECT COUNT(*) AS c FROM locations')['c']    ?? 0),
-    'testimonials' => (int)(db_one('SELECT COUNT(*) AS c FROM testimonials')['c'] ?? 0),
-    'faqs'         => (int)(db_one('SELECT COUNT(*) AS c FROM faqs')['c']         ?? 0),
-    'quotes_new'   => (int)(db_one("SELECT COUNT(*) AS c FROM quote_requests WHERE status='new'")['c'] ?? 0),
+    'services'     => $safe_count('SELECT COUNT(*) AS c FROM services'),
+    'locations'    => $safe_count('SELECT COUNT(*) AS c FROM locations'),
+    'testimonials' => $safe_count('SELECT COUNT(*) AS c FROM testimonials'),
+    'faqs'         => $safe_count('SELECT COUNT(*) AS c FROM faqs'),
+    'quotes_new'   => $safe_count("SELECT COUNT(*) AS c FROM quote_requests WHERE status='new'"),
 ];
-$recent = db_all('SELECT id, name, phone, area, service_needed, created_at FROM quote_requests ORDER BY id DESC LIMIT 10');
+try {
+    $recent = db_all('SELECT id, name, phone, area, service_needed, created_at FROM quote_requests ORDER BY id DESC LIMIT 10');
+} catch (Throwable $e) {
+    error_log('[admin index recent] ' . $e->getMessage());
+    $recent = [];
+}
+
+$missing = db_missing_tables();
 
 $admin_title = 'Dashboard';
 require __DIR__ . '/_layout.php';
 ?>
+<?php if (!empty($missing)): ?>
+  <div class="alert alert--error" style="background:#fff8ec;border:1px solid #ff8c2a;color:#0e1f4a">
+    <strong>Schema incomplete.</strong> Missing tables: <code><?= e(implode(', ', $missing)) ?></code>.
+    <a href="<?= e(url('/admin/install.php')) ?>">Run installer</a>.
+  </div>
+<?php endif; ?>
 <div class="stat-grid">
   <a class="stat" href="services.php"><span class="stat__num"><?= $counts['services'] ?></span><span>Services</span></a>
   <a class="stat" href="locations.php"><span class="stat__num"><?= $counts['locations'] ?></span><span>Locations</span></a>

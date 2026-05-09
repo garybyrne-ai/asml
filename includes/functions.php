@@ -338,19 +338,50 @@ function client_ip(): string
 
 function admin_login(string $username, string $password): bool
 {
-    $user = db_one(
-        'SELECT * FROM admin_users WHERE username = :u OR email = :u LIMIT 1',
-        [':u' => $username]
-    );
+    try {
+        $user = db_one(
+            'SELECT * FROM admin_users WHERE username = :u OR email = :u LIMIT 1',
+            [':u' => $username]
+        );
+    } catch (Throwable $e) {
+        error_log('[admin_login] ' . $e->getMessage());
+        $_SESSION['admin_login_error'] = $e->getMessage();
+        return false;
+    }
     if (!$user || !password_verify($password, $user['password_hash'])) {
         return false;
     }
     $_SESSION['admin_id']       = (int) $user['id'];
     $_SESSION['admin_username'] = $user['username'];
     $_SESSION['admin_role']     = $user['role'];
-    db_exec('UPDATE admin_users SET last_login = NOW() WHERE id = :id', [':id' => $user['id']]);
+    try {
+        db_exec('UPDATE admin_users SET last_login = NOW() WHERE id = :id', [':id' => $user['id']]);
+    } catch (Throwable $e) {
+        error_log('[admin_login last_login] ' . $e->getMessage());
+    }
     session_regenerate_id(true);
     return true;
+}
+
+/**
+ * Inspect the database to find tables required by the app that don't
+ * exist yet. Returns an array of missing table names, or [] if all good.
+ *
+ * @return array<int,string>
+ */
+function db_missing_tables(): array
+{
+    $required = ['admin_users','settings','services','locations','testimonials','faqs','quote_requests','pricing_items'];
+    try {
+        $rows = db_all('SHOW TABLES');
+    } catch (Throwable $e) {
+        return $required;     // can't read → treat all as missing
+    }
+    $present = [];
+    foreach ($rows as $r) {
+        $present[] = strtolower((string) reset($r));
+    }
+    return array_values(array_diff($required, $present));
 }
 
 function admin_logout(): void
