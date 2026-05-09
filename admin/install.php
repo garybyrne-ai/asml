@@ -29,24 +29,25 @@ if ($schemaOk) {
     admin_require();
 }
 
-$mode = $_POST['mode'] ?? 'safe';   // safe | fresh
-$sqlFile = SITE_ROOT . ($mode === 'fresh' ? '/database-fresh.sql' : '/database-install.sql');
+$sqlFile = SITE_ROOT . '/database.sql';
 $report  = [];
 $ranAny  = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     csrf_require();
     if (!is_file($sqlFile)) {
-        $report[] = ['err', basename($sqlFile) . ' is missing on the server. Re-upload it to ' . e($sqlFile)];
+        $report[] = ['err', 'database.sql is missing on the server. Re-upload it to ' . e($sqlFile)];
     } else {
         $sql = (string) file_get_contents($sqlFile);
         // Strip line comments (-- …) but preserve strings.
         $sql = preg_replace('~^\s*--.*$~m', '', $sql) ?? $sql;
-        // Naïve but workable splitter — schema doesn't contain stored procedures
-        // or DELIMITER blocks.
         $statements = array_filter(array_map('trim', explode(";\n", $sql)));
 
         $pdo = db();
+        // Make sure the connection charset itself is utf8mb4 in case the
+        // PDO DSN was overridden somewhere.
+        try { $pdo->exec("SET NAMES utf8mb4"); } catch (Throwable $e) {}
+
         foreach ($statements as $stmt) {
             $stmt = rtrim($stmt, ";\n\r\t ");
             if ($stmt === '') continue;
@@ -82,11 +83,13 @@ $missing_after = db_missing_tables();
 <body class="admin">
 <div class="install">
   <h1>Database installer</h1>
-  <p>Running <code>database-install.sql</code> against the live database.
-  This is safe to run repeatedly — every statement uses <code>IF NOT EXISTS</code>,
-  <code>INSERT IGNORE</code> or <code>ON DUPLICATE KEY UPDATE</code>.</p>
+  <p>Running <code>database.sql</code> against the live database. The script
+  drops every Locksmiths.ie table, recreates them with the correct
+  utf8mb4 charset (so the € sign and Unicode arrows store cleanly),
+  and reseeds all services, locations, pricing, content and the
+  default admin user. Safe to re-run.</p>
 
-  <p><strong>Tables required:</strong> admin_users, settings, services, locations, testimonials, faqs, quote_requests, pricing_items</p>
+  <p><strong>Tables created:</strong> admin_users, settings, services, locations, testimonials, faqs, quote_requests, pricing_items</p>
 
   <?php if ($ranAny): ?>
     <?php if (empty($missing_after)): ?>
@@ -109,15 +112,11 @@ $missing_after = db_missing_tables();
   <?php else: ?>
     <p>Currently missing: <code><?= e(empty($missing) ? 'none — schema is fine' : implode(', ', $missing)) ?></code></p>
 
-    <h2 style="margin-top:1.4rem">Pick an installer mode</h2>
-    <form method="post" style="display:flex;flex-direction:column;gap:.7rem">
+    <form method="post" style="margin-top:1.4rem">
       <?= csrf_field() ?>
-      <button class="btn btn--primary" name="mode" value="safe">
-        Safe install / repair (idempotent — keeps existing data)
-      </button>
-      <button class="btn" name="mode" value="fresh"
-              onclick="return confirm('This DROPS all Locksmiths.ie tables and re-creates them from scratch. Quote requests, customisations and admin password changes will be lost. Continue?');">
-        Fresh install (drop and recreate everything)
+      <button class="btn btn--primary"
+              onclick="return confirm('This DROPS all Locksmiths.ie tables and recreates them with seed data. Quote requests and admin password changes will be lost. Continue?');">
+        Install / re-install database
       </button>
     </form>
   <?php endif; ?>
