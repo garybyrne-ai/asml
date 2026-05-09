@@ -1097,9 +1097,6 @@ ON DUPLICATE KEY UPDATE `setting_value` = VALUES(`setting_value`);
 UPDATE `services` SET `price_from` = 90.00 WHERE `price_from` IS NOT NULL AND `price_from` < 90;
 
 -- ===== Long-form content (location + key service bodies + testimonials) =====
-UPDATE / REPLACE statements).
--- Apply via:  phpMyAdmin → eqdueglqgt → Import → upload this file.
--- =====================================================================
 
 -- ---------- A. Settings: positioning copy used across pages ----------
 INSERT INTO `settings` (`setting_key`,`setting_value`) VALUES
