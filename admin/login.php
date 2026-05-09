@@ -37,30 +37,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </style>
 </head>
 <body class="admin admin--login">
-<form class="login-card" method="post" action="">
-  <h1>Locksmiths.ie Admin</h1>
+<div class="login-wrap">
+  <form class="login-card" method="post" action="">
+    <h1>Locksmiths.ie Admin</h1>
+    <p class="login-card__lede">Sign in to manage services, locations, pricing and content.</p>
 
-  <?php if ($schemaIssue): ?>
-    <div class="install-banner">
-      <h2>Database is not fully installed</h2>
-      <p>The following tables are missing: <code><?= e(implode(', ', $missing)) ?></code></p>
-      <p>Click below to install the schema (creates any missing tables and seeds data — existing data is preserved).</p>
-      <a class="btn btn--primary" href="<?= e(url('/admin/install.php')) ?>">Run installer →</a>
-    </div>
-  <?php endif; ?>
+    <?php if ($schemaIssue): ?>
+      <div class="install-banner">
+        <h2>Database is not fully installed</h2>
+        <p>The following tables are missing: <code><?= e(implode(', ', $missing)) ?></code></p>
+        <p>Click below to install the schema and seed data.</p>
+        <a class="btn btn--primary" href="<?= e(url('/admin/install.php')) ?>">Run installer →</a>
+      </div>
+    <?php endif; ?>
 
-  <?php if ($loginError && !$schemaIssue): ?>
-    <p class="alert alert--error"><strong>Database error:</strong> <?= e($loginError) ?></p>
-  <?php endif; ?>
+    <?php if ($loginError && !$schemaIssue): ?>
+      <p class="alert alert--error"><strong>Database error:</strong> <?= e($loginError) ?></p>
+    <?php endif; ?>
 
-  <?php if ($error): ?>
-    <p class="alert alert--error"><?= e($error) ?></p>
-  <?php endif; ?>
+    <?php if ($error): ?>
+      <p class="alert alert--error"><?= e($error) ?></p>
+    <?php endif; ?>
 
-  <?= csrf_field() ?>
-  <label>Username or email <input type="text" name="username" required autofocus></label>
-  <label>Password <input type="password" name="password" required></label>
-  <button class="btn btn--primary btn--block" type="submit">Sign in</button>
-</form>
+    <?= csrf_field() ?>
+    <label>Username or email <input type="text" name="username" required autofocus></label>
+    <label>Password <input type="password" name="password" required></label>
+    <button class="btn btn--primary btn--block" type="submit">Sign in</button>
+  </form>
+
+  <p class="login-credit">
+    Hand-coded by <a href="https://hihello.me/p/1e07b733-bcbc-4877-ba48-4d724305c91e" target="_blank" rel="noopener">Ankush Kalia</a>.
+  </p>
+</div>
 </body>
 </html>

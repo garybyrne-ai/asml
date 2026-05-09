@@ -32,11 +32,26 @@ require __DIR__ . '/_layout.php';
   </div>
 <?php endif; ?>
 <div class="stat-grid">
-  <a class="stat" href="services.php"><span class="stat__num"><?= $counts['services'] ?></span><span>Services</span></a>
-  <a class="stat" href="locations.php"><span class="stat__num"><?= $counts['locations'] ?></span><span>Locations</span></a>
-  <a class="stat" href="testimonials.php"><span class="stat__num"><?= $counts['testimonials'] ?></span><span>Testimonials</span></a>
-  <a class="stat" href="faqs.php"><span class="stat__num"><?= $counts['faqs'] ?></span><span>FAQs</span></a>
-  <a class="stat stat--alert" href="quotes.php"><span class="stat__num"><?= $counts['quotes_new'] ?></span><span>New Quotes</span></a>
+  <a class="stat" href="services.php">
+    <span class="stat__num"><?= $counts['services'] ?></span>
+    <span class="stat__label">Services</span>
+  </a>
+  <a class="stat" href="locations.php">
+    <span class="stat__num"><?= $counts['locations'] ?></span>
+    <span class="stat__label">Locations</span>
+  </a>
+  <a class="stat" href="testimonials.php">
+    <span class="stat__num"><?= $counts['testimonials'] ?></span>
+    <span class="stat__label">Testimonials</span>
+  </a>
+  <a class="stat" href="faqs.php">
+    <span class="stat__num"><?= $counts['faqs'] ?></span>
+    <span class="stat__label">FAQs</span>
+  </a>
+  <a class="stat stat--alert" href="quotes.php">
+    <span class="stat__num"><?= $counts['quotes_new'] ?></span>
+    <span class="stat__label">New Quotes</span>
+  </a>
 </div>
 
 <h2>Recent quote requests</h2>
