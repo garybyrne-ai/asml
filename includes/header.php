@@ -34,7 +34,7 @@ function nav_icon(string $name): string
     return $base . ($paths[$name] ?? '') . '</svg>';
 }
 
-$asset_v = '20260509e';   // cache-bust
+$asset_v = '20260509f';   // cache-bust
 ?>
 <!doctype html>
 <html lang="en-IE">

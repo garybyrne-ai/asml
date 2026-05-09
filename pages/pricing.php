@@ -34,6 +34,13 @@ require __DIR__ . '/../includes/header.php';
       <p class="lead"><?= e($intro) ?></p>
     <?php endif; ?>
 
+    <div class="content">
+      <h2>How our pricing works</h2>
+      <p>Every quote is fixed before we leave the depot. The minimum job price is <strong>€90</strong> — that covers a non-destructive entry into a locked door, including the visit. There is no separate call-out fee bolted on top, no after-hours surcharge, no weekend or bank-holiday premium. The price you hear on the phone is the price you pay when the work is done.</p>
+      <p>For specialist work — multipoint mechanism replacement, master-key suites, smart-lock installation, on-site car-key programming — we agree the fixed price on the phone before we travel, based on the door type and brand. We''ll never ask you to pay anything extra at the door.</p>
+      <p>The list below covers the most common Dublin locksmith jobs. Anything not listed is quoted on the phone — call <a href="tel:<?= e(setting('phone_e164')) ?>"><?= e(setting('phone')) ?></a>.</p>
+    </div>
+
     <div class="pricing-table" role="table" aria-label="Locksmith prices">
       <div class="pricing-table__head" role="row">
         <div role="columnheader">Service</div>
@@ -67,6 +74,17 @@ require __DIR__ . '/../includes/header.php';
         Call <?= e(setting('phone')) ?> for a quote
       </a>
     </p>
+
+    <div class="content" style="margin-top:3rem">
+      <h2>What you''re paying for</h2>
+      <p>Behind every price on this list is a fully PSA-licensed technician with a fully-stocked van — not a sub-contractor bid via an online lead-auction. Every cylinder we fit is certified to British Standard (BS3621 5-lever, TS007 3-star anti-snap), every part is sourced from a recognised supplier and every job carries a written 12-month guarantee on parts and labour.</p>
+
+      <h2>Why we don''t do "free call-outs"</h2>
+      <p>You will see ads from other companies advertising "no call-out fee — pay only for the work". In practice the work then arrives priced 2–3× higher than market rate to absorb the call-out cost. We prefer to be honest: the minimum price for any job is €90, that includes the visit, and the price for everything else on the list is exactly what you''ll pay.</p>
+
+      <h2>Discounts</h2>
+      <p>We offer a small discount for: (a) bulk window-lock fittings on a whole house (more than five), (b) full-property cylinder replacements (front, back, side and patio doors at the same time), and (c) regular landlords doing tenant changeovers. Just ask on the phone.</p>
+    </div>
   </div>
 </section>
 

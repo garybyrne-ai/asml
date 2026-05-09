@@ -24,6 +24,13 @@ require __DIR__ . '/../includes/header.php';
 </section>
 
 <section class="section">
+  <div class="container container--narrow content">
+    <p class="lead">The fastest way to reach us is the phone — we answer twenty-four hours a day, seven days a week, on a real Dublin <strong>01 landline</strong>. Calls cost the same as any other local number. No premium rate, no overseas redirect, no auctioned leads. Or fill in the form below and we will call you back within minutes during the day, or first thing in the morning if it isn''t an emergency.</p>
+    <p>If you are locked out right now, please call rather than emailing or messaging — voice is always faster, and we can have a van rolling before you even hang up.</p>
+  </div>
+</section>
+
+<section class="section">
   <div class="container contact-grid">
 
     <div class="contact-grid__info">
@@ -111,6 +118,34 @@ require __DIR__ . '/../includes/header.php';
         <div class="quote-form__msg" role="status" aria-live="polite"></div>
       </form>
     </aside>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container container--narrow">
+    <h2 class="section__title">Find us &amp; our coverage</h2>
+    <?= google_map_iframe(53.349805, -6.260310, 'North City, Dublin 1, D01 F297, Ireland', 12) ?>
+    <p style="text-align:center;color:var(--c-muted);font-size:.95rem">
+      Office address: <strong><?= e(setting('address_street')) ?>, <?= e(setting('address_city')) ?>, <?= e(setting('address_postcode')) ?></strong>.
+      Vans dispatched 24 hours a day across all Dublin postcodes.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow content">
+    <h2>Frequently asked contact questions</h2>
+    <h3>Are you really open at 3am?</h3>
+    <p>Yes. Around 40% of our calls happen between 10pm and 6am. Someone is always rostered on the phone, and a fully-stocked van is on the road within minutes of the call ending.</p>
+
+    <h3>Is the (01) 878 2720 number free to call?</h3>
+    <p>It''s a standard Dublin landline. From a mobile or another landline it costs whatever your plan charges for an Irish 01 number — for most modern bill-pay and bundled mobile plans that is free or pennies per minute. There is no premium-rate surcharge regardless of when you call.</p>
+
+    <h3>Can I get a quote by email or WhatsApp?</h3>
+    <p>Yes — message us with the door type (timber / UPVC / composite), the lock brand if you can see it, and a quick photo if possible, and we''ll send back a fixed quote. For lockouts and other emergencies the phone is far faster.</p>
+
+    <h3>Where are you based?</h3>
+    <p>Our office is in <strong><?= e(setting('address_city')) ?>, <?= e(setting('address_postcode')) ?></strong>. The vans are spread across the city — north, south and west — so wherever you''re calling from, the closest one is dispatched.</p>
   </div>
 </section>
 
