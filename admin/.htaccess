@@ -1,0 +1,4 @@
+# Admin: don't apply the public front-controller rewrites here.
+RewriteEngine On
+RewriteRule ^_layout(_end)?\.php$ - [F,L]
+DirectoryIndex index.php
