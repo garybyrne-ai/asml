@@ -44,9 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $statements = array_filter(array_map('trim', explode(";\n", $sql)));
 
         $pdo = db();
-        // Make sure the connection charset itself is utf8mb4 in case the
-        // PDO DSN was overridden somewhere.
+        // Belt-and-braces: force utf8mb4 + relax to emulated prepares so
+        // session-level meta-commands like SET / ALTER DATABASE don't fail
+        // on the native prepared-statement protocol (MySQL #1295).
         try { $pdo->exec("SET NAMES utf8mb4"); } catch (Throwable $e) {}
+        try { $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, true); } catch (Throwable $e) {}
 
         foreach ($statements as $stmt) {
             $stmt = rtrim($stmt, ";\n\r\t ");

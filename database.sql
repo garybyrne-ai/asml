@@ -19,12 +19,6 @@
 SET NAMES utf8mb4;
 SET CHARACTER SET utf8mb4;
 
--- Make sure the database itself defaults to utf8mb4. Harmless if it
--- already is.
-SET @db := DATABASE();
-SET @sql := CONCAT('ALTER DATABASE `', @db, '` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci');
-PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
-
 SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `pricing_items`;
 DROP TABLE IF EXISTS `quote_requests`;
