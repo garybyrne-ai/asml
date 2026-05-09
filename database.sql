@@ -19,7 +19,7 @@
 -- ---------------------------------------------------------------------
 -- Admin users
 -- ---------------------------------------------------------------------
-CREATE TABLE `admin_users` (
+CREATE TABLE IF NOT EXISTS `admin_users` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(60) NOT NULL,
   `email` VARCHAR(150) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `admin_users` (
 -- ---------------------------------------------------------------------
 -- Global business / NAP settings (single row, key=value design)
 -- ---------------------------------------------------------------------
-CREATE TABLE `settings` (
+CREATE TABLE IF NOT EXISTS `settings` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `setting_key` VARCHAR(100) NOT NULL,
   `setting_value` LONGTEXT,
@@ -47,7 +47,7 @@ CREATE TABLE `settings` (
 -- ---------------------------------------------------------------------
 -- Service pages (Emergency, Burglary, Smart Locks, etc.)
 -- ---------------------------------------------------------------------
-CREATE TABLE `services` (
+CREATE TABLE IF NOT EXISTS `services` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `slug` VARCHAR(160) NOT NULL,
   `title` VARCHAR(200) NOT NULL,
@@ -74,7 +74,7 @@ CREATE TABLE `services` (
 -- ---------------------------------------------------------------------
 -- Location pages (Dublin districts D1-D24, towns, counties)
 -- ---------------------------------------------------------------------
-CREATE TABLE `locations` (
+CREATE TABLE IF NOT EXISTS `locations` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `slug` VARCHAR(160) NOT NULL,
   `name` VARCHAR(120) NOT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE `locations` (
 -- ---------------------------------------------------------------------
 -- Testimonials / reviews
 -- ---------------------------------------------------------------------
-CREATE TABLE `testimonials` (
+CREATE TABLE IF NOT EXISTS `testimonials` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `customer_name` VARCHAR(120) NOT NULL,
   `customer_location` VARCHAR(120) DEFAULT NULL,
@@ -125,7 +125,7 @@ CREATE TABLE `testimonials` (
 -- ---------------------------------------------------------------------
 -- FAQ entries (used for FAQPage schema)
 -- ---------------------------------------------------------------------
-CREATE TABLE `faqs` (
+CREATE TABLE IF NOT EXISTS `faqs` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `question` VARCHAR(255) NOT NULL,
   `answer` TEXT NOT NULL,
@@ -144,7 +144,7 @@ CREATE TABLE `faqs` (
 -- ---------------------------------------------------------------------
 -- Quote / contact submissions
 -- ---------------------------------------------------------------------
-CREATE TABLE `quote_requests` (
+CREATE TABLE IF NOT EXISTS `quote_requests` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(120) NOT NULL,
   `phone` VARCHAR(40) NOT NULL,
@@ -168,27 +168,35 @@ CREATE TABLE `quote_requests` (
 -- Default admin user (password: ChangeMe!2026 — change immediately after install)
 INSERT INTO `admin_users` (`username`, `email`, `password_hash`, `role`)
 VALUES ('admin', 'admin@locksmiths.ie',
-        '$2y$12$5xK2mC8h8hJZ5cQnP4xO5e6zXxR9rJq/3K7vVqK8x2pP3lZ8nQ2eG',
-        'admin');
+        '$2y$12$PY3fvAGUjkk0CnaM3Fx8MOqa8AYzRqP9tR5P8jW8Wpn9mcbl0hAb.',
+        'admin')
+ON DUPLICATE KEY UPDATE `password_hash` = VALUES(`password_hash`);
 
 -- Global settings (NAP, PSA, SMTP, code injection)
 INSERT INTO `settings` (`setting_key`, `setting_value`) VALUES
 ('business_name',       'Locksmiths.ie'),
-('phone',               '01 254 8888'),
-('phone_e164',          '+353012548888'),
-('whatsapp',            '+353871234567'),
+('phone',               '(01) 878 2720'),
+('phone_e164',          '+35318782720'),
+('whatsapp',            '+35318782720'),
 ('email',               'info@locksmiths.ie'),
-('address_street',      '12 O''Connell Street'),
-('address_city',        'Dublin'),
-('address_postcode',    'D01 X4P5'),
+('address_street',      'North City'),
+('address_city',        'Dublin 1'),
+('address_postcode',    'D01 F297'),
 ('address_country',     'IE'),
 ('latitude',            '53.349805'),
 ('longitude',           '-6.260310'),
 ('opening_hours',       'Mo-Su 00:00-23:59'),
 ('price_range',         '€€'),
-('psa_license',         'PSA 12345'),
+('psa_license',         'PSA 00709'),
 ('response_time',       '20-30 minutes'),
-('logo',                '/assets/images/locksmiths-ie-logo.svg'),
+('logo',                '/assets/images/locksmiths-ie-logo-horizontal.svg'),
+('social_twitter',      'https://twitter.com/IeLocksmiths'),
+('social_pinterest',    'https://www.pinterest.com/ielocksmiths/'),
+('social_facebook',     ''),
+('social_instagram',    ''),
+('social_linkedin',     ''),
+('social_youtube',      ''),
+('custom_css',          ''),
 ('hero_title',          'Dublin''s Fastest Emergency Locksmith'),
 ('hero_subtitle',       'PSA Licensed. 20-minute response. No call-out fee. 12-month guarantee on all work.'),
 ('smtp_host',           'smtp.example.com'),
@@ -201,10 +209,11 @@ INSERT INTO `settings` (`setting_key`, `setting_value`) VALUES
 ('inject_head',         ''),
 ('inject_body_start',   ''),
 ('inject_footer',       ''),
-('google_maps_key',     '');
+('google_maps_key',     '')
+ON DUPLICATE KEY UPDATE `setting_value` = VALUES(`setting_value`);
 
 -- Seed core services
-INSERT INTO `services` (`slug`, `title`, `category`, `short_description`, `body`, `icon`, `meta_title`, `meta_description`, `focus_keyword`, `price_from`, `sort_order`) VALUES
+INSERT IGNORE INTO `services` (`slug`, `title`, `category`, `short_description`, `body`, `icon`, `meta_title`, `meta_description`, `focus_keyword`, `price_from`, `sort_order`) VALUES
 ('emergency-lockout',  'Emergency Lockout Service',  'emergency',
  'Locked out? PSA-licensed locksmith on-site in 20 minutes anywhere in Dublin.',
  '<p>Our 24/7 emergency lockout service covers all of Dublin and the Greater Dublin Area. Whether you are locked out of your home, office or car, our PSA-licensed technicians arrive on-site in 20–30 minutes with the tools and skill to get you back inside without damaging your door or lock.</p>',
@@ -248,7 +257,7 @@ INSERT INTO `services` (`slug`, `title`, `category`, `short_description`, `body`
  'commercial locksmith dublin', 200.00, 6);
 
 -- Seed Dublin districts D1-D24 (selected — admin can extend)
-INSERT INTO `locations` (`slug`, `name`, `region`, `district_code`, `landmark`, `landmark_secondary`, `intro`, `latitude`, `longitude`, `meta_title`, `meta_description`, `focus_keyword`, `sort_order`) VALUES
+INSERT IGNORE INTO `locations` (`slug`, `name`, `region`, `district_code`, `landmark`, `landmark_secondary`, `intro`, `latitude`, `longitude`, `meta_title`, `meta_description`, `focus_keyword`, `sort_order`) VALUES
 ('locksmith-dublin-1',  'Dublin 1',  'dublin_city', 'D1',  'O''Connell Street',     'The Spire',
  'Locksmith Dublin 1 — PSA-licensed emergency locksmith covering the city centre, IFSC and North Wall.',
  53.350140, -6.259660,
@@ -313,7 +322,7 @@ INSERT INTO `locations` (`slug`, `name`, `region`, `district_code`, `landmark`, 
  'locksmith saggart', 52);
 
 -- Seed FAQs
-INSERT INTO `faqs` (`question`, `answer`, `is_global`, `sort_order`) VALUES
+INSERT IGNORE INTO `faqs` (`question`, `answer`, `is_global`, `sort_order`) VALUES
 ('How fast can a locksmith reach me in Dublin?',
  'Our average response time across Dublin city and the Greater Dublin Area is 20 to 30 minutes, 24 hours a day.', 1, 1),
 ('Are you PSA licensed?',
@@ -326,7 +335,7 @@ INSERT INTO `faqs` (`question`, `answer`, `is_global`, `sort_order`) VALUES
  'No. Our PSA-licensed technicians use non-destructive entry methods on more than 95% of jobs.', 1, 5);
 
 -- Seed example testimonials
-INSERT INTO `testimonials` (`customer_name`, `customer_location`, `rating`, `review_body`, `is_featured`, `review_date`) VALUES
+INSERT IGNORE INTO `testimonials` (`customer_name`, `customer_location`, `rating`, `review_body`, `is_featured`, `review_date`) VALUES
 ('Sarah O''Brien',    'Rathmines, D6',          5, 'Locked out at 1am — they were at my door in 18 minutes and had me inside in 5. Brilliant service.', 1, '2026-04-21'),
 ('Mark Kavanagh',     'Tallaght',               5, 'Quoted me a fixed price on the phone, no hidden fees. Fitted a new anti-snap cylinder same day.', 1, '2026-04-15'),
 ('Aoife Murphy',      'Sandyford, D18',         5, 'Genuinely the fastest locksmith in Dublin. Polite, professional and reasonably priced.', 1, '2026-04-09'),

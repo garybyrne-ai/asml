@@ -82,7 +82,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
         crossorigin="anonymous"></script>
-<script src="<?= e(asset('js/main.js')) ?>" defer></script>
+<script src="<?= e(asset('js/main.js?v=' . ($asset_v ?? '1'))) ?>" defer></script>
 
 <?= setting('inject_footer') ?>
 </body>
