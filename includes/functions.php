@@ -340,8 +340,8 @@ function admin_login(string $username, string $password): bool
 {
     try {
         $user = db_one(
-            'SELECT * FROM admin_users WHERE username = :u OR email = :u LIMIT 1',
-            [':u' => $username]
+            'SELECT * FROM admin_users WHERE username = :u OR email = :e LIMIT 1',
+            [':u' => $username, ':e' => $username]
         );
     } catch (Throwable $e) {
         error_log('[admin_login] ' . $e->getMessage());
