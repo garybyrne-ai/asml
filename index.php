@@ -10,6 +10,14 @@ require_once __DIR__ . '/includes/functions.php';
 
 $path = trim(parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?? '/', '/');
 
+// Sitemap — handle in PHP so it works even when Apache's mod_rewrite
+// isn't honoured (Cloudways' Nginx layer in front of Apache can swallow
+// the .htaccess rewrite for non-PHP extensions like .xml).
+if ($path === 'sitemap.xml' || $path === 'sitemap') {
+    require __DIR__ . '/sitemap.php';
+    exit;
+}
+
 // Static routes
 $static_pages = [
     ''          => 'home',
