@@ -9,6 +9,7 @@ $urls = [
     ['/',          '1.0', 'daily'],
     ['/services',  '0.9', 'weekly'],
     ['/locations', '0.9', 'weekly'],
+    ['/pricing',   '0.85','weekly'],
     ['/reviews',   '0.7', 'weekly'],
     ['/about',     '0.5', 'monthly'],
     ['/contact',   '0.7', 'monthly'],

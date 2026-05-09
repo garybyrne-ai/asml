@@ -2859,3 +2859,647 @@ INSERT IGNORE INTO `locations`
  'locksmith waterford', 77);
 
 -- Make sure existing nearby counties (Kildare / Meath / Wicklow) have a friendly region label
+
+-- =====================================================================
+-- Van slam locks — full long-form page (1200+ words, every Irish van make)
+-- =====================================================================
+
+UPDATE `services` SET
+  `short_description` = 'Slam locks, deadlocks, hooks and anti-peel plates fitted to every common Irish van — Sprinter, Transit, Crafter, Master, Vivaro and more — at your home, depot or job site, anywhere in Ireland.',
+  `meta_title`        = 'Van Slam Locks Ireland | Sprinter, Transit, Crafter, Master',
+  `meta_description`  = 'On-site van slam-lock fitting nationwide. Mercedes Sprinter, Ford Transit, VW Crafter, Renault Master, Vauxhall Vivaro, Iveco Daily and more. PSA licensed. Fixed price.',
+  `focus_keyword`     = 'van slam locks ireland',
+  `body` = '
+<p>Tradesman vans across Ireland are robbed every single night. The Garda Síochána publishes the numbers each year and the trend never moves: opportunist tool theft from parked vans is one of the highest-volume non-violent crimes in the country. Most of those vans were left "locked". The factory-fit central-locking on a Mercedes Sprinter, Ford Transit, VW Crafter or Renault Master can be defeated in under thirty seconds with a flat-bladed screwdriver, a cheap rip-cord puller or one of the radio-jamming devices that retail online for less than €50. The factory key fob makes a single neat click when you press it, and the same single click is all it takes to unlock every door on the van.</p>
+
+<p>A slam lock changes that. The moment the door closes, a hardened bolt drops into a reinforced strike plate, mechanically — no key, no fob, no electronic signal that can be jammed. It cannot be left unlocked accidentally, it cannot be opened with a wireless attack, and it cannot be peeled off without serious effort and noise. Combined with deadlocks, hooks and anti-peel plates, a properly-protected van is the difference between losing €15,000 of stock to a chancer in a balaclava and being insured-up but never claiming.</p>
+
+<p>Locksmiths.ie fits van slam locks across the whole of Ireland — at your home, your depot, your client site, anywhere you can leave the van for a couple of hours. PSA licensed (PSA 00709), fixed price agreed before we travel, twelve-month guarantee on every fitting. Below is what we fit, the makes and models we cover, and how the visit usually plays out.</p>
+
+<h2>Every common Irish van make and model we fit slam locks to</h2>
+
+<h3>Mercedes-Benz</h3>
+<ul>
+  <li><strong>Mercedes Sprinter</strong> — every generation from the 906 (2006-2018) and W907/910 (2018-present), short, medium and long wheelbase, low and high roof. Cab door, side load door and rear barn doors all individually slam-lockable.</li>
+  <li><strong>Mercedes Vito</strong> and <strong>eVito</strong> — both drive-side and load areas.</li>
+  <li><strong>Mercedes Citan</strong> — small panel van, good candidate for compact slam locks.</li>
+</ul>
+
+<h3>Ford</h3>
+<ul>
+  <li><strong>Ford Transit</strong> — Mk6, Mk7, Mk8 and the current Custom and full-size Transit. We do thousands of these — they''re the most common tradesman van in Ireland.</li>
+  <li><strong>Ford Transit Custom</strong> (2012 onwards, including the new 2024 model).</li>
+  <li><strong>Ford Transit Connect</strong> — small / mid panel van.</li>
+  <li><strong>Ford Transit Courier</strong> — the smallest in the Transit line.</li>
+  <li><strong>Ford E-Transit</strong> — same chassis as the diesel Transit, slam locks fit identically.</li>
+  <li><strong>Ford Ranger</strong> — pickup with a hardtop or canopy; slam locks on canopy doors.</li>
+</ul>
+
+<h3>Volkswagen</h3>
+<ul>
+  <li><strong>VW Crafter</strong> — both the original Crafter (shared platform with Mercedes Sprinter, 2006-2017) and the current Crafter (2017 onwards, MAN-built).</li>
+  <li><strong>VW Transporter</strong> T5, T6 and T6.1 — including SWB, LWB, panel van, kombi and crew-cab variants.</li>
+  <li><strong>VW Caddy</strong> Mk3, Mk4 and Mk5 (2020 onwards).</li>
+  <li><strong>VW Multivan</strong> and <strong>Caravelle</strong> commercial conversions.</li>
+  <li><strong>VW ID. Buzz Cargo</strong> — the new electric Transporter; we have fitted slam locks to several already.</li>
+</ul>
+
+<h3>Renault</h3>
+<ul>
+  <li><strong>Renault Master</strong> — every generation, including the current Mk4 (2010 onwards) and the new Mk5 (2024 onwards).</li>
+  <li><strong>Renault Trafic</strong> — Mk3 (2014 onwards) and current.</li>
+  <li><strong>Renault Kangoo</strong> — Mk2, Mk3 and the new electric Kangoo Z.E.</li>
+  <li><strong>Renault Express</strong> — re-introduced 2021 small van.</li>
+</ul>
+
+<h3>Vauxhall / Opel</h3>
+<ul>
+  <li><strong>Vauxhall / Opel Vivaro</strong> — all generations including the current Stellantis-platform Vivaro (2019 onwards) and Vivaro-e.</li>
+  <li><strong>Vauxhall / Opel Movano</strong> — both the older Renault-platform Movano and the new 2022 Stellantis-platform Movano.</li>
+  <li><strong>Vauxhall / Opel Combo</strong> — current Combo and Combo-e (Stellantis).</li>
+</ul>
+
+<h3>Peugeot</h3>
+<ul>
+  <li><strong>Peugeot Boxer</strong> — every generation including the current Boxer and e-Boxer.</li>
+  <li><strong>Peugeot Expert</strong> — current Expert (2016 onwards) and e-Expert.</li>
+  <li><strong>Peugeot Partner</strong> — Mk2 and Mk3.</li>
+  <li><strong>Peugeot Rifter</strong> commercial.</li>
+</ul>
+
+<h3>Citroën</h3>
+<ul>
+  <li><strong>Citroën Relay</strong> (the European Jumper) — every generation.</li>
+  <li><strong>Citroën Dispatch</strong> (Jumpy) — current Dispatch and e-Dispatch.</li>
+  <li><strong>Citroën Berlingo</strong> Mk2 and Mk3.</li>
+</ul>
+
+<h3>Iveco, Fiat, Toyota, Nissan and others</h3>
+<ul>
+  <li><strong>Iveco Daily</strong> — extremely common in Ireland for trades, courier and recovery.</li>
+  <li><strong>Fiat Ducato</strong> and <strong>Fiat Doblo</strong>.</li>
+  <li><strong>Fiat Talento</strong> and <strong>Fiat Scudo</strong> (Stellantis platform).</li>
+  <li><strong>Toyota ProAce</strong>, <strong>Toyota ProAce City</strong> and <strong>Toyota Hilux</strong> (with canopy).</li>
+  <li><strong>Toyota Hiace</strong> — older but still in service across Irish trades.</li>
+  <li><strong>Nissan NV200</strong>, <strong>Nissan NV400</strong> and <strong>Nissan Primastar</strong> (relaunched 2022).</li>
+  <li><strong>Nissan Townstar</strong> — Renault Kangoo equivalent.</li>
+  <li><strong>Maxus Deliver 3 / Deliver 9 / eDeliver</strong> — increasingly common in Ireland for last-mile fleets.</li>
+  <li><strong>LDV / Maxus V80</strong>.</li>
+  <li><strong>Mitsubishi L200</strong> and <strong>Mitsubishi Express</strong>.</li>
+  <li><strong>Isuzu D-Max</strong> with canopy.</li>
+  <li><strong>SsangYong Musso</strong>.</li>
+  <li><strong>Hyundai H1, H300, iLoad and Staria-Load</strong>.</li>
+  <li><strong>KIA K2500</strong>.</li>
+</ul>
+
+<p>If your van isn''t on this list, ring us anyway — slam-lock manufacturers cover almost every panel van and pickup sold in Ireland in the last twenty years. Send us a photo of the door and we''ll confirm fitment in minutes.</p>
+
+<h2>What we fit, and why</h2>
+
+<p>A van security pack is a stack of complementary parts. Each component plugs a specific weakness in the factory build. Our techs walk through the van with you and recommend the right combination for the way you use it, the value of the contents and the locations the van sleeps overnight.</p>
+
+<ul>
+  <li><strong>Slam locks (one per door)</strong> — the headline product. The lock engages automatically when the door closes. There is no key in the cab, no fob signal in the air, and no possibility of the van being left unlocked. Cab driver, cab passenger, side load, rear barn left, rear barn right and single rear doors are all individually slam-lockable on most vans.</li>
+  <li><strong>Deadlocks</strong> — a second key-operated locking point above the factory lock. They defeat the rip-cord and lock-bumping methods in seconds because there is no factory weakness to attack — it is a brand-new mechanism in a brand-new position on the door.</li>
+  <li><strong>Hook locks</strong> — secondary catches that engage at the top and bottom of a barn door. They take away the leverage point a thief uses to peel the door open with a screwdriver or a crowbar.</li>
+  <li><strong>Anti-peel plates</strong> — bonded steel plates that reinforce the door edge, the door skin and the frame so that a peel attack distorts the door without ever giving access. Particularly important on Mercedes Sprinter and VW Crafter rear barn doors, which have a known peel-attack weakness.</li>
+  <li><strong>Internal partition locks</strong> — separate the cab from the load area so a thief who breaks into the cab cannot reach the tools through the bulkhead.</li>
+  <li><strong>Replacement keys and key fobs</strong> — cut and programmed on-site if you''ve lost yours, including modern transponder keys and keyless-go fobs.</li>
+</ul>
+
+<h2>How long a fitting takes</h2>
+
+<p>A single slam lock takes about 45 minutes per door — drilling the door skin to the manufacturer template, fitting the lock body, lining up the strike plate, sealing the door edges and testing. A typical tradesman van — slam locks on the side load and rear barn doors plus a deadlock on each — is finished inside two hours. A full security pack with slam locks, deadlocks, hooks and anti-peel plates on a long-wheelbase Sprinter is closer to four hours.</p>
+
+<p>We can work at your home, your depot, your supplier yard, your customer site or anywhere you can leave the van parked for the morning. We''ll take a £50 deposit on the phone to confirm the booking and the balance is paid by card or bank transfer when the work is done.</p>
+
+<h2>Where we travel</h2>
+
+<p>We are based in Dublin and we travel for van work nationwide. Realistic travel batches: <strong>Dublin, Kildare, Meath, Louth, Wicklow, Wexford, Carlow, Westmeath, Laois, Offaly, Cavan, Monaghan</strong> are all single-day jobs. <strong>Cork, Limerick, Galway, Waterford, Donegal, Sligo, Mayo, Kerry</strong> we batch into scheduled trips — typically one trip per region every 7–14 days. For fleets of three or more vans on one site, we''ll travel anywhere in Ireland on the day. Travel is included in the fixed quote — no surprise top-up at the door.</p>
+
+<h2>Brands we fit</h2>
+
+<p>Locks 4 Vans, Slamlocks Direct, Vanguard, Maple, Armaplate, Trade Vans Ireland and Sussex Installations. We''ll recommend the right combination based on the van make, your insurance requirements and your day-to-day workflow. All hardware comes with the manufacturer''s own warranty in addition to our 12-month fitting guarantee.</p>
+
+<h2>Pricing</h2>
+
+<ul>
+  <li>Single slam lock supplied and fitted: <strong>from €180 per door</strong></li>
+  <li>Slam lock + deadlock combo per door: <strong>from €260 per door</strong></li>
+  <li>Full van pack — slam locks + deadlocks + hooks on three doors: <strong>from €750 fitted</strong></li>
+  <li>Full security pack — full van pack plus anti-peel plates and partition lock: <strong>from €980 fitted</strong></li>
+  <li>Fleets of 3+ vans: <strong>discounted, quoted on the phone</strong></li>
+</ul>
+
+<p>See the <a href="/pricing">full price list</a>. Every job carries a 12-month guarantee on parts and labour.</p>
+
+<h2>What to send us before the visit</h2>
+
+<ol>
+  <li>Make, model and year of the van (and side door / barn door confirmation)</li>
+  <li>Which doors you want secured (cab driver / cab passenger / side load / rear barn / single rear)</li>
+  <li>One photo of the side load door and one of the rear doors — saves time identifying the door type</li>
+  <li>Where you''d like the work done (home / depot / job site)</li>
+  <li>Any history with the van (insurance claim, attempted theft, previous slam-lock fitting that failed)</li>
+</ol>
+
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for a fixed-price quote. Local Dublin landline, real Dublin team, no premium-rate divert and no auctioned leads. We answer twenty-four hours a day.</p>
+'
+WHERE `slug` = 'van-slam-locks-installation';
+
+-- =====================================================================
+-- More Dublin districts and nearby-county towns
+-- =====================================================================
+
+INSERT IGNORE INTO `locations`
+  (`slug`,`name`,`region`,`district_code`,`landmark`,`landmark_secondary`,`intro`,`body`,`latitude`,`longitude`,`meta_title`,`meta_description`,`focus_keyword`,`sort_order`) VALUES
+
+-- ----- Dublin districts not yet covered -----
+('locksmith-dublin-3','Dublin 3','dublin_city','D3','Clontarf','Fairview',
+ 'Locksmith Dublin 3 — covering Clontarf, Fairview, East Wall and Marino.',
+ '<p>Our Dublin 3 service covers <strong>Clontarf, Fairview, East Wall, North Strand and Marino</strong> — a mix of Edwardian seafront villas, post-war semis and modern apartment developments along the bay. We are usually 12 minutes from any D3 address inside the M50.</p>
+<h3>Common Dublin 3 jobs</h3>
+<ul>
+  <li>House lockouts on the Clontarf seafront and side roads</li>
+  <li>BS3621 5-lever mortice deadlock fitting on the older Edwardian timber doors</li>
+  <li>UPVC multipoint mechanism repair on the East Wall and Fairview estates</li>
+  <li>Anti-snap cylinder upgrades after attempted break-ins</li>
+  <li>Apartment lockouts on the Vernon Avenue and Howth Road developments</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> any hour, any day.</p>',
+ 53.367,-6.187,
+ 'Locksmith Dublin 3 (D3) | Clontarf, Fairview, East Wall',
+ 'PSA-licensed locksmith Dublin 3 — Clontarf, Fairview, East Wall, Marino. 24/7 response, fixed price from €90.',
+ 'locksmith dublin 3', 3),
+
+('locksmith-dublin-5','Dublin 5','dublin_city','D5','Raheny','Artane',
+ 'Locksmith Dublin 5 — covering Raheny, Artane, Kilbarrack, Donnycarney and Harmonstown.',
+ '<p>Our Dublin 5 service covers <strong>Raheny, Artane, Kilbarrack, Donnycarney and Harmonstown</strong>. The mix is large 1950s-60s semis along the Howth Road and Malahide Road, plus modern apartment developments around Raheny village and Kilbarrack DART.</p>
+<h3>Common Dublin 5 jobs</h3>
+<ul>
+  <li>House lockouts in Raheny, Artane and Donnycarney</li>
+  <li>BS3621 mortice deadlock fitting on the older timber doors</li>
+  <li>UPVC multipoint repair on the post-1990 estates</li>
+  <li>Anti-snap upgrades on the Howth Road family homes</li>
+  <li>Apartment lockouts at Raheny village and the DART-side blocks</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for a 15-minute response from our north-Dublin van.</p>',
+ 53.379,-6.176,
+ 'Locksmith Dublin 5 (D5) | Raheny, Artane, Kilbarrack',
+ 'PSA-licensed locksmith Dublin 5 — Raheny, Artane, Kilbarrack, Donnycarney. 24/7 response, fixed price.',
+ 'locksmith dublin 5', 5),
+
+('locksmith-dublin-7','Dublin 7','dublin_city','D7','Cabra','Stoneybatter',
+ 'Locksmith Dublin 7 — covering Cabra, Stoneybatter, Phibsborough, Smithfield and the Mater Hospital catchment.',
+ '<p>Our Dublin 7 service covers <strong>Cabra, Stoneybatter, Phibsborough, Smithfield, Manor Street and Grangegorman</strong>. The housing mix is heavy on red-brick Victorian terraces with original timber sash doors, plus the modern Smithfield and Grangegorman developments around TUD.</p>
+<h3>Common Dublin 7 jobs</h3>
+<ul>
+  <li>BS3621 5-lever mortice deadlock fitting on the original timber doors</li>
+  <li>House lockouts across Stoneybatter, Manor Street and Phibsborough</li>
+  <li>Anti-snap cylinder upgrades on Cabra family homes</li>
+  <li>Apartment lockouts in Smithfield and Grangegorman</li>
+  <li>Mater Hospital staff lockouts at shift change</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for fast PSA-licensed response.</p>',
+ 53.358,-6.286,
+ 'Locksmith Dublin 7 (D7) | Cabra, Stoneybatter, Phibsborough',
+ 'PSA-licensed locksmith Dublin 7 — Cabra, Stoneybatter, Phibsborough, Smithfield. 24/7 response, fixed price.',
+ 'locksmith dublin 7', 7),
+
+('locksmith-dublin-8','Dublin 8','dublin_city','D8','The Liberties','Kilmainham',
+ 'Locksmith Dublin 8 — covering the Liberties, Kilmainham, Inchicore, Portobello and Rialto.',
+ '<p>Our Dublin 8 service covers <strong>the Liberties, Kilmainham, Inchicore, Portobello, Rialto, James''s and Christchurch</strong>. A wide mix of housing — original Liberties terraces, Kilmainham red-bricks, Inchicore corporation estates and the modern apartment developments around Heuston Station.</p>
+<h3>Common Dublin 8 jobs</h3>
+<ul>
+  <li>House lockouts across the Liberties, Kilmainham and Inchicore</li>
+  <li>UPVC multipoint repair on the modern Heuston-side apartments</li>
+  <li>Anti-snap cylinder upgrades</li>
+  <li>Apartment lockouts at Bonham Street and the Heuston South Quarter</li>
+  <li>Tenant lock changes on the Portobello and Rialto rentals</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for 15-minute response.</p>',
+ 53.339,-6.291,
+ 'Locksmith Dublin 8 (D8) | Liberties, Kilmainham, Inchicore',
+ 'PSA-licensed locksmith Dublin 8 — Liberties, Kilmainham, Inchicore, Portobello, Rialto. 24/7 response.',
+ 'locksmith dublin 8', 8),
+
+('locksmith-dublin-9','Dublin 9','dublin_city','D9','Drumcondra','Glasnevin',
+ 'Locksmith Dublin 9 — covering Drumcondra, Glasnevin, Whitehall, Beaumont and Ballymun.',
+ '<p>Our Dublin 9 service covers <strong>Drumcondra, Glasnevin, Whitehall, Beaumont, Santry and Ballymun</strong>. Lots of post-war semis around Drumcondra Road and Griffith Avenue, plus modern apartment developments in the IKEA-area and the DCU campus catchment.</p>
+<h3>Common Dublin 9 jobs</h3>
+<ul>
+  <li>House lockouts across Drumcondra, Glasnevin and Whitehall</li>
+  <li>BS3621 mortice deadlocks on the older timber doors</li>
+  <li>UPVC multipoint repair on the Beaumont and Santry estates</li>
+  <li>DCU student-accommodation lockouts and core re-keys</li>
+  <li>Beaumont Hospital staff lockouts at shift change</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for fast PSA-licensed response.</p>',
+ 53.371,-6.262,
+ 'Locksmith Dublin 9 (D9) | Drumcondra, Glasnevin, Beaumont',
+ 'PSA-licensed locksmith Dublin 9 — Drumcondra, Glasnevin, Whitehall, Beaumont, Santry. 24/7 response.',
+ 'locksmith dublin 9', 9),
+
+('locksmith-dublin-10','Dublin 10','dublin_city','D10','Ballyfermot','Cherry Orchard',
+ 'Locksmith Dublin 10 — covering Ballyfermot, Cherry Orchard and Le Fanu.',
+ '<p>Our Dublin 10 service covers <strong>Ballyfermot, Cherry Orchard, Le Fanu and the Ballyfermot Road corridor</strong>. The mix is corporation-built family homes from the 1950s onwards, plus modern apartment developments along the Lucan Road.</p>
+<h3>Common Dublin 10 jobs</h3>
+<ul>
+  <li>House lockouts across Ballyfermot and Cherry Orchard</li>
+  <li>UPVC multipoint mechanism repair</li>
+  <li>Anti-snap cylinder upgrades after attempted break-ins</li>
+  <li>BS3621 mortice deadlocks on older timber doors</li>
+  <li>Tenant lock changes on the rental stock</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> 24/7.</p>',
+ 53.342,-6.357,
+ 'Locksmith Dublin 10 (D10) | Ballyfermot, Cherry Orchard',
+ 'PSA-licensed locksmith Dublin 10 — Ballyfermot, Cherry Orchard. 24/7 response, fixed price.',
+ 'locksmith dublin 10', 10),
+
+('locksmith-dublin-11','Dublin 11','dublin_city','D11','Finglas','Cappagh',
+ 'Locksmith Dublin 11 — covering Finglas, Cappagh, Charlestown and Glasnevin North.',
+ '<p>Our Dublin 11 service covers <strong>Finglas, Cappagh, Charlestown, Glasnevin North and the Charlestown Shopping Centre catchment</strong>. Plenty of corporation semis from the 1960s onwards plus modern apartment developments at Charlestown.</p>
+<h3>Common Dublin 11 jobs</h3>
+<ul>
+  <li>House lockouts across Finglas and Cappagh</li>
+  <li>UPVC multipoint repair on the modern composite doors</li>
+  <li>Anti-snap cylinder upgrades on Finglas family homes</li>
+  <li>Apartment lockouts at Charlestown</li>
+  <li>Tenant lock changes</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for fast response.</p>',
+ 53.388,-6.297,
+ 'Locksmith Dublin 11 (D11) | Finglas, Cappagh, Charlestown',
+ 'PSA-licensed locksmith Dublin 11 — Finglas, Cappagh. 24/7 response, fixed price.',
+ 'locksmith dublin 11', 11),
+
+('locksmith-dublin-12','Dublin 12','dublin_city','D12','Crumlin','Walkinstown',
+ 'Locksmith Dublin 12 — covering Crumlin, Walkinstown, Drimnagh and Greenhills.',
+ '<p>Our Dublin 12 service covers <strong>Crumlin, Walkinstown, Drimnagh, Kimmage and Greenhills</strong>. Mostly post-war semis around Crumlin Road and Sundrive Road, plus modern apartment developments at Walkinstown and Greenhills.</p>
+<h3>Common Dublin 12 jobs</h3>
+<ul>
+  <li>House lockouts across Crumlin, Walkinstown and Drimnagh</li>
+  <li>BS3621 mortice deadlock fitting on the older timber doors</li>
+  <li>UPVC multipoint repair on the post-1990 retrofits</li>
+  <li>Anti-snap cylinder upgrades</li>
+  <li>Tenant lock changes on the rental stock around Crumlin</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> 24/7.</p>',
+ 53.327,-6.314,
+ 'Locksmith Dublin 12 (D12) | Crumlin, Walkinstown, Drimnagh',
+ 'PSA-licensed locksmith Dublin 12 — Crumlin, Walkinstown, Drimnagh. 24/7 response.',
+ 'locksmith dublin 12', 12),
+
+('locksmith-dublin-13','Dublin 13','dublin_city','D13','Sutton','Baldoyle',
+ 'Locksmith Dublin 13 — covering Sutton, Baldoyle, Donaghmede, Bayside and Howth Junction.',
+ '<p>Our Dublin 13 service covers <strong>Sutton, Baldoyle, Donaghmede, Bayside and Howth Junction</strong>. The mix is coastal semis around Sutton Cross, modern Donaghmede estates and the apartment developments along the Bayside DART corridor.</p>
+<h3>Common Dublin 13 jobs</h3>
+<ul>
+  <li>House lockouts across Sutton, Baldoyle and Donaghmede</li>
+  <li>Sliding patio door lock repair (very common on coastal homes)</li>
+  <li>Anti-snap cylinder upgrades on Donaghmede family homes</li>
+  <li>UPVC multipoint repair</li>
+  <li>Apartment lockouts on the Bayside developments</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for 18-minute response.</p>',
+ 53.391,-6.143,
+ 'Locksmith Dublin 13 (D13) | Sutton, Baldoyle, Donaghmede',
+ 'PSA-licensed locksmith Dublin 13 — Sutton, Baldoyle, Donaghmede, Bayside. 24/7 response.',
+ 'locksmith dublin 13', 13),
+
+('locksmith-dublin-14','Dublin 14','dublin_city','D14','Dundrum','Churchtown',
+ 'Locksmith Dublin 14 — covering Dundrum, Churchtown, Goatstown and Windy Arbour.',
+ '<p>Our Dublin 14 service covers <strong>Dundrum, Churchtown, Goatstown, Windy Arbour and Clonskeagh</strong>. Heavy mix of large 1960s-70s semis and modern apartment developments around Dundrum Town Centre.</p>
+<h3>Common Dublin 14 jobs</h3>
+<ul>
+  <li>Dundrum Town Centre apartment lockouts</li>
+  <li>House lockouts across Goatstown and Churchtown</li>
+  <li>UPVC multipoint repair on the modern estates</li>
+  <li>Anti-snap cylinder upgrades after attempted break-ins</li>
+  <li>Apartment core re-keys (Mul-T-Lock, ISEO restricted suites)</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for 12-minute response.</p>',
+ 53.290,-6.248,
+ 'Locksmith Dublin 14 (D14) | Dundrum, Churchtown, Goatstown',
+ 'PSA-licensed locksmith Dublin 14 — Dundrum, Churchtown, Goatstown, Windy Arbour. 24/7 response.',
+ 'locksmith dublin 14', 14),
+
+('locksmith-dublin-16','Dublin 16','dublin_city','D16','Knocklyon','Ballinteer',
+ 'Locksmith Dublin 16 — covering Knocklyon, Ballinteer, Rathfarnham and Stocking Lane.',
+ '<p>Our Dublin 16 service covers <strong>Knocklyon, Ballinteer, Rathfarnham (south side), Stocking Lane and Edmondstown</strong>. Mostly post-1980s family homes with UPVC and composite front doors.</p>
+<h3>Common Dublin 16 jobs</h3>
+<ul>
+  <li>UPVC multipoint mechanism repair on Knocklyon and Ballinteer estates</li>
+  <li>House lockouts across the south-Dublin estates</li>
+  <li>Anti-snap cylinder upgrades</li>
+  <li>BS3621 mortice deadlocks on older timber doors</li>
+  <li>Marlay Park event-night car lockouts</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> 24/7.</p>',
+ 53.281,-6.300,
+ 'Locksmith Dublin 16 (D16) | Knocklyon, Ballinteer, Rathfarnham',
+ 'PSA-licensed locksmith Dublin 16 — Knocklyon, Ballinteer, Rathfarnham. 24/7 response.',
+ 'locksmith dublin 16', 16),
+
+('locksmith-dublin-17','Dublin 17','dublin_city','D17','Coolock','Belcamp',
+ 'Locksmith Dublin 17 — covering Coolock, Belcamp, Darndale and Priorswood.',
+ '<p>Our Dublin 17 service covers <strong>Coolock, Belcamp, Darndale, Priorswood and the Cadbury / Coolock industrial estates</strong>. Mostly corporation-built family homes plus modern apartment developments around the M50 / N32.</p>
+<h3>Common Dublin 17 jobs</h3>
+<ul>
+  <li>House lockouts across Coolock and Darndale</li>
+  <li>Anti-snap cylinder upgrades after attempted break-ins</li>
+  <li>UPVC multipoint repair on the modern composite doors</li>
+  <li>Industrial estate end-of-day lockouts</li>
+  <li>Tenant lock changes on the rental stock</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for fast response.</p>',
+ 53.392,-6.197,
+ 'Locksmith Dublin 17 (D17) | Coolock, Belcamp, Darndale',
+ 'PSA-licensed locksmith Dublin 17 — Coolock, Belcamp, Darndale, Priorswood. 24/7 response.',
+ 'locksmith dublin 17', 17),
+
+('locksmith-dublin-20','Dublin 20','dublin_city','D20','Palmerstown','Chapelizod',
+ 'Locksmith Dublin 20 — covering Palmerstown, Chapelizod, Cherry Orchard and the Palmerstown Shopping Centre catchment.',
+ '<p>Our Dublin 20 service covers <strong>Palmerstown, Chapelizod and Cherry Orchard</strong>. Mostly post-1970 family homes plus modern apartment developments along the N4 corridor.</p>
+<h3>Common Dublin 20 jobs</h3>
+<ul>
+  <li>UPVC multipoint repair on the modern estates</li>
+  <li>House lockouts across Palmerstown and Chapelizod</li>
+  <li>Anti-snap cylinder upgrades after attempted break-ins</li>
+  <li>Liffey Valley shopping centre car lockouts</li>
+  <li>Tenant lock changes on the rental stock</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> 24/7.</p>',
+ 53.351,-6.378,
+ 'Locksmith Dublin 20 (D20) | Palmerstown, Chapelizod',
+ 'PSA-licensed locksmith Dublin 20 — Palmerstown, Chapelizod, Cherry Orchard. 24/7 response.',
+ 'locksmith dublin 20', 20),
+
+('locksmith-dublin-22','Dublin 22','dublin_city','D22','Clondalkin','Liffey Valley',
+ 'Locksmith Dublin 22 — covering Clondalkin, Liffey Valley, Quarryvale and Rowlagh.',
+ '<p>Our Dublin 22 service covers <strong>Clondalkin, Liffey Valley, Quarryvale, Rowlagh and Bawnogue</strong>. The mix runs from the original Clondalkin village houses near the Round Tower to the modern Liffey Valley apartment developments.</p>
+<h3>Common Dublin 22 jobs</h3>
+<ul>
+  <li>UPVC multipoint repair on Clondalkin and Quarryvale estates</li>
+  <li>House lockouts across the Clondalkin catchment</li>
+  <li>Anti-snap cylinder upgrades</li>
+  <li>Liffey Valley shopping centre car lockouts</li>
+  <li>BS3621 mortice deadlocks on the older village houses</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> 24/7.</p>',
+ 53.319,-6.400,
+ 'Locksmith Dublin 22 (D22) | Clondalkin, Liffey Valley',
+ 'PSA-licensed locksmith Dublin 22 — Clondalkin, Liffey Valley, Quarryvale. 24/7 response.',
+ 'locksmith dublin 22', 22),
+
+-- ----- Kildare -----
+('locksmith-naas','Naas','kildare',NULL,'Naas Town Centre','Naas Racecourse',
+ 'Locksmith Naas — covering Naas town and surrounding mid-Kildare 24/7.',
+ '<p>Our Naas service covers <strong>Naas town, Sallins, Kill, Newhall and the M7 / N7 corridor into Dublin</strong>. Average response time from our west-Dublin van is 30–40 minutes.</p>
+<h3>Common Naas jobs</h3>
+<ul>
+  <li>House lockouts across Naas, Sallins and Kill</li>
+  <li>UPVC multipoint mechanism repair on the modern estates</li>
+  <li>Anti-snap cylinder upgrades</li>
+  <li>Naas Racecourse event-night car lockouts</li>
+  <li>Van slam-lock fitting at trade addresses</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for a fixed-price quote including travel.</p>',
+ 53.220,-6.665,
+ 'Locksmith Naas | Mid-Kildare Locksmith',
+ 'Locksmith Naas — PSA licensed, fixed price, 30-40 min response from Dublin. House lockouts, UPVC repair, van slam locks.',
+ 'locksmith naas', 100),
+
+('locksmith-newbridge','Newbridge','kildare',NULL,'Newbridge Town Centre','Whitewater Shopping Centre',
+ 'Locksmith Newbridge — covering Newbridge town and surrounding south-Kildare.',
+ '<p>Our Newbridge service covers <strong>Newbridge town, Kildare town and the Curragh</strong>. Travel time from Dublin is 40–50 minutes.</p>
+<h3>Common Newbridge jobs</h3>
+<ul>
+  <li>House lockouts across Newbridge and Kildare town</li>
+  <li>UPVC multipoint repair on the modern estates</li>
+  <li>Anti-snap cylinder upgrades</li>
+  <li>Whitewater Shopping Centre car lockouts</li>
+  <li>Van slam-lock fitting</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for a fixed-price quote.</p>',
+ 53.181,-6.798,
+ 'Locksmith Newbridge | South-Kildare Locksmith',
+ 'Locksmith Newbridge — PSA licensed, fixed price. House lockouts, UPVC repair, van slam locks.',
+ 'locksmith newbridge', 101),
+
+('locksmith-maynooth','Maynooth','kildare',NULL,'Maynooth University','Maynooth Castle',
+ 'Locksmith Maynooth — covering Maynooth town and the university catchment.',
+ '<p>Our Maynooth service covers <strong>Maynooth town, Leixlip, Celbridge and the Maynooth University campus</strong>. Travel time from Dublin is 25–35 minutes.</p>
+<h3>Common Maynooth jobs</h3>
+<ul>
+  <li>Student-accommodation lockouts and core re-keys at Maynooth University</li>
+  <li>House lockouts across Maynooth, Leixlip and Celbridge</li>
+  <li>UPVC multipoint repair on the modern estates</li>
+  <li>Anti-snap cylinder upgrades</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for fast response.</p>',
+ 53.380,-6.591,
+ 'Locksmith Maynooth | University Town Locksmith',
+ 'Locksmith Maynooth — PSA licensed, fixed price. University accommodation lockouts, UPVC repair.',
+ 'locksmith maynooth', 102),
+
+('locksmith-celbridge','Celbridge','kildare',NULL,'Celbridge Village','Castletown House',
+ 'Locksmith Celbridge — covering Celbridge village and surrounding north-Kildare.',
+ '<p>Our Celbridge service covers <strong>Celbridge village, Maynooth, Leixlip and the Castletown / N4 corridor</strong>. Travel time from Dublin is 25–35 minutes.</p>
+<h3>Common Celbridge jobs</h3>
+<ul>
+  <li>House lockouts across Celbridge and Leixlip</li>
+  <li>UPVC multipoint repair on the modern estates</li>
+  <li>Anti-snap cylinder upgrades after attempted break-ins</li>
+  <li>BS3621 mortice deadlock fitting</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> 24/7.</p>',
+ 53.343,-6.541,
+ 'Locksmith Celbridge | North-Kildare Locksmith',
+ 'Locksmith Celbridge — PSA licensed, fixed price. House lockouts, UPVC repair, anti-snap upgrades.',
+ 'locksmith celbridge', 103),
+
+('locksmith-leixlip','Leixlip','kildare',NULL,'Leixlip Village','Intel Ireland',
+ 'Locksmith Leixlip — covering Leixlip village and the Intel campus catchment.',
+ '<p>Our Leixlip service covers <strong>Leixlip, Lucan-side, Confey and the Intel / Hewlett-Packard campuses</strong>. Travel time from Dublin is 20–30 minutes.</p>
+<h3>Common Leixlip jobs</h3>
+<ul>
+  <li>House lockouts across Leixlip and Confey</li>
+  <li>UPVC multipoint repair on the modern estates</li>
+  <li>Anti-snap cylinder upgrades</li>
+  <li>Office and contractor lockouts at Intel and HP campuses</li>
+  <li>Van slam-lock fitting at trade addresses</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for fast response.</p>',
+ 53.366,-6.494,
+ 'Locksmith Leixlip | Intel Campus Catchment',
+ 'Locksmith Leixlip — PSA licensed, fixed price. House lockouts, contractor lockouts at Intel campus.',
+ 'locksmith leixlip', 104),
+
+-- ----- Meath -----
+('locksmith-navan','Navan','meath',NULL,'Navan Town Centre','Tara Mall',
+ 'Locksmith Navan — covering Navan town and surrounding Meath.',
+ '<p>Our Navan service covers <strong>Navan town, Trim, Bective and the N3 corridor</strong>. Travel time from Dublin is 45–55 minutes.</p>
+<h3>Common Navan jobs</h3>
+<ul>
+  <li>House lockouts across Navan and Trim</li>
+  <li>UPVC multipoint mechanism repair on the modern estates</li>
+  <li>Anti-snap cylinder upgrades</li>
+  <li>Van slam-lock fitting at trade-base addresses</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for a fixed-price quote.</p>',
+ 53.652,-6.681,
+ 'Locksmith Navan | Meath Locksmith',
+ 'Locksmith Navan — PSA licensed, fixed price. House lockouts, UPVC repair, van slam locks.',
+ 'locksmith navan', 110),
+
+('locksmith-ashbourne','Ashbourne','meath',NULL,'Ashbourne Town','Ashbourne Retail Park',
+ 'Locksmith Ashbourne — covering Ashbourne and surrounding south-Meath.',
+ '<p>Our Ashbourne service covers <strong>Ashbourne, Ratoath, Dunshaughlin and the M2 corridor</strong>. Travel time from Dublin is 25–35 minutes.</p>
+<h3>Common Ashbourne jobs</h3>
+<ul>
+  <li>House lockouts across Ashbourne and Ratoath</li>
+  <li>UPVC multipoint repair on the modern estates</li>
+  <li>Anti-snap cylinder upgrades</li>
+  <li>Ashbourne Retail Park car lockouts</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> 24/7.</p>',
+ 53.512,-6.395,
+ 'Locksmith Ashbourne | South-Meath Locksmith',
+ 'Locksmith Ashbourne — PSA licensed, fixed price. House lockouts, UPVC repair, anti-snap upgrades.',
+ 'locksmith ashbourne', 111),
+
+('locksmith-dunboyne','Dunboyne','meath',NULL,'Dunboyne Village','Dunboyne Castle',
+ 'Locksmith Dunboyne — covering Dunboyne village and surrounding south-Meath.',
+ '<p>Our Dunboyne service covers <strong>Dunboyne village, Clonee and the M3 corridor</strong>. Travel time from Dublin is 25–35 minutes.</p>
+<h3>Common Dunboyne jobs</h3>
+<ul>
+  <li>House lockouts across Dunboyne and Clonee</li>
+  <li>UPVC multipoint repair on the modern estates</li>
+  <li>Anti-snap cylinder upgrades</li>
+  <li>Dunboyne railway station car lockouts</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> 24/7.</p>',
+ 53.420,-6.475,
+ 'Locksmith Dunboyne | South-Meath Locksmith',
+ 'Locksmith Dunboyne — PSA licensed, fixed price. House lockouts, UPVC repair.',
+ 'locksmith dunboyne', 112),
+
+('locksmith-trim','Trim','meath',NULL,'Trim Castle','Trim Town',
+ 'Locksmith Trim — covering Trim and surrounding Boyne Valley.',
+ '<p>Our Trim service covers <strong>Trim, Athboy and Bective</strong>. Travel time from Dublin is 50–60 minutes.</p>
+<h3>Common Trim jobs</h3>
+<ul>
+  <li>House lockouts across Trim town and the surrounding villages</li>
+  <li>UPVC multipoint repair</li>
+  <li>Anti-snap cylinder upgrades</li>
+  <li>Holiday-home lock changes on the Boyne</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for a fixed-price quote.</p>',
+ 53.555,-6.793,
+ 'Locksmith Trim | Boyne Valley Locksmith',
+ 'Locksmith Trim — PSA licensed, fixed price. House lockouts, UPVC repair.',
+ 'locksmith trim', 113),
+
+-- ----- Wicklow -----
+('locksmith-bray','Bray','wicklow',NULL,'Bray Seafront','Bray Head',
+ 'Locksmith Bray — covering Bray town and surrounding north-Wicklow.',
+ '<p>Our Bray service covers <strong>Bray town, Bray seafront, Greystones-side and the M11 corridor</strong>. Travel time from Dublin is 25–35 minutes.</p>
+<h3>Common Bray jobs</h3>
+<ul>
+  <li>House lockouts across Bray, Bray seafront and Shankill border</li>
+  <li>UPVC multipoint repair on the modern estates</li>
+  <li>Sliding patio door lock repair (very common on coastal homes)</li>
+  <li>Anti-snap cylinder upgrades after attempted break-ins</li>
+  <li>Holiday-let smart-lock fitting</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for fast response from our south-Dublin van.</p>',
+ 53.203,-6.108,
+ 'Locksmith Bray | North-Wicklow Locksmith',
+ 'Locksmith Bray — PSA licensed, fixed price. Coastal homes, UPVC repair, anti-snap upgrades.',
+ 'locksmith bray', 120),
+
+('locksmith-greystones','Greystones','wicklow',NULL,'Greystones Harbour','Greystones DART',
+ 'Locksmith Greystones — covering Greystones town and the south-Wicklow DART corridor.',
+ '<p>Our Greystones service covers <strong>Greystones town, Delgany, Kilcoole and the south-Wicklow DART corridor</strong>. Travel time from Dublin is 35–45 minutes.</p>
+<h3>Common Greystones jobs</h3>
+<ul>
+  <li>House lockouts across Greystones and Delgany</li>
+  <li>UPVC multipoint repair on the modern estates</li>
+  <li>Sliding patio door lock repair on coastal homes</li>
+  <li>Anti-snap cylinder upgrades</li>
+  <li>Holiday-let smart-lock fitting around the harbour</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> 24/7.</p>',
+ 53.143,-6.064,
+ 'Locksmith Greystones | South-Wicklow Coastal Locksmith',
+ 'Locksmith Greystones — PSA licensed, fixed price. Coastal homes, UPVC repair.',
+ 'locksmith greystones', 121),
+
+('locksmith-wicklow-town','Wicklow Town','wicklow',NULL,'Wicklow Harbour','Wicklow Gaol',
+ 'Locksmith Wicklow Town — covering Wicklow town and surrounding mid-Wicklow.',
+ '<p>Our Wicklow Town service covers <strong>Wicklow town, Rathnew, Ashford and the N11 mid-Wicklow corridor</strong>. Travel time from Dublin is 60–75 minutes.</p>
+<h3>Common Wicklow Town jobs</h3>
+<ul>
+  <li>House lockouts across Wicklow town and Rathnew</li>
+  <li>UPVC multipoint repair on the modern estates</li>
+  <li>Holiday-home lock changes around the harbour</li>
+  <li>Anti-snap cylinder upgrades</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for a fixed-price quote.</p>',
+ 52.980,-6.045,
+ 'Locksmith Wicklow Town | Mid-Wicklow Locksmith',
+ 'Locksmith Wicklow Town — PSA licensed, fixed price. Coastal homes, UPVC repair.',
+ 'locksmith wicklow town', 122),
+
+('locksmith-arklow','Arklow','wicklow',NULL,'Arklow Town','Arklow Harbour',
+ 'Locksmith Arklow — covering Arklow and surrounding south-Wicklow.',
+ '<p>Our Arklow service covers <strong>Arklow town, Brittas Bay, Avoca and the south-Wicklow coast</strong>. Travel time from Dublin is 75–90 minutes.</p>
+<h3>Common Arklow jobs</h3>
+<ul>
+  <li>House lockouts across Arklow town</li>
+  <li>UPVC multipoint repair on the modern estates</li>
+  <li>Holiday-home lock changes around Brittas Bay</li>
+  <li>Anti-snap cylinder upgrades</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for a fixed-price quote.</p>',
+ 52.793,-6.142,
+ 'Locksmith Arklow | South-Wicklow Locksmith',
+ 'Locksmith Arklow — PSA licensed, fixed price. Holiday homes, coastal jobs.',
+ 'locksmith arklow', 123),
+
+-- ----- Louth -----
+('locksmith-drogheda','Drogheda','louth',NULL,'Drogheda Town Centre','M1 Drogheda Park',
+ 'Locksmith Drogheda — covering Drogheda town and surrounding south-Louth.',
+ '<p>Our Drogheda service covers <strong>Drogheda town, the M1 South catchment and surrounding south-Louth</strong>. Travel time from Dublin is 45–60 minutes.</p>
+<h3>Common Drogheda jobs</h3>
+<ul>
+  <li>House lockouts across Drogheda town and the post-2000 estates</li>
+  <li>UPVC multipoint repair on the modern composite doors</li>
+  <li>Anti-snap cylinder upgrades after attempted break-ins</li>
+  <li>Drogheda West Street commercial / retail lockouts</li>
+  <li>Van slam-lock fitting at trade-base addresses</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for fast response from our north-Dublin van.</p>',
+ 53.715,-6.350,
+ 'Locksmith Drogheda | South-Louth Locksmith',
+ 'Locksmith Drogheda — PSA licensed, fixed price. UPVC repair, anti-snap upgrades.',
+ 'locksmith drogheda', 130),
+
+('locksmith-dundalk','Dundalk','louth',NULL,'Dundalk Town','Dundalk Bay',
+ 'Locksmith Dundalk — covering Dundalk town and surrounding north-Louth.',
+ '<p>Our Dundalk service covers <strong>Dundalk town, Ardee, Carlingford and the north-Louth M1 corridor</strong>. Travel time from Dublin is 60–80 minutes.</p>
+<h3>Common Dundalk jobs</h3>
+<ul>
+  <li>House lockouts across Dundalk town and Ardee</li>
+  <li>UPVC multipoint repair on the modern estates</li>
+  <li>Anti-snap cylinder upgrades</li>
+  <li>Dundalk Park Street commercial lockouts</li>
+  <li>Van slam-lock fitting at trade addresses</li>
+</ul>
+<p>Call <a href="tel:+35318782720">(01) 878 2720</a> for a fixed-price quote including travel.</p>',
+ 54.001,-6.405,
+ 'Locksmith Dundalk | North-Louth Locksmith',
+ 'Locksmith Dundalk — PSA licensed, fixed price. UPVC repair, anti-snap upgrades.',
+ 'locksmith dundalk', 131);

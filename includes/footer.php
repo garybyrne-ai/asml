@@ -104,7 +104,12 @@
         ]);
       ?>
       <p><?= e($copy) ?></p>
-      <p><a href="<?= e(url('/pricing')) ?>">Pricing</a> · <a href="<?= e(url('/privacy')) ?>">Privacy</a> · <a href="<?= e(url('/terms')) ?>">Terms</a></p>
+      <p>
+        <a href="<?= e(url('/pricing')) ?>">Pricing</a> ·
+        <a href="<?= e(url('/sitemap.xml')) ?>">Sitemap</a> ·
+        <a href="<?= e(url('/privacy')) ?>">Privacy</a> ·
+        <a href="<?= e(url('/terms')) ?>">Terms</a>
+      </p>
     </div>
   </div>
 </footer>
