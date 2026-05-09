@@ -11,9 +11,12 @@ $breadcrumbs      = $breadcrumbs      ?? [];
 $phone   = setting('phone');
 $phoneE  = setting('phone_e164');
 $wa      = setting('whatsapp');
-$logo    = setting('logo');
+$logo    = setting('logo', '/assets/images/locksmiths-ie-logo-horizontal.svg');
 $psa     = setting('psa_license');
 $response = setting('response_time', '20-30 minutes');
+
+$nav_services  = array_slice(get_services(), 0, 14);
+$nav_locations = array_slice(get_locations(), 0, 18);
 ?>
 <!doctype html>
 <html lang="en-IE">
@@ -41,6 +44,11 @@ $response = setting('response_time', '20-30 minutes');
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="<?= e(asset('css/style.css')) ?>">
 <link rel="icon" href="<?= e(asset('images/favicon.svg')) ?>" type="image/svg+xml">
+<?php $custom_css = trim(setting('custom_css')); if ($custom_css !== ''): ?>
+<style id="lk-custom-css">
+<?= $custom_css /* trusted: admin-only input */ ?>
+</style>
+<?php endif; ?>
 
 <?= schema_local_business() ?>
 <?php
@@ -58,7 +66,14 @@ if ($breadcrumbs) echo schema_breadcrumbs($breadcrumbs);
 <header class="site-header">
   <div class="container site-header__inner">
     <a href="<?= e(SITE_URL) ?>" class="brand">
-      <img src="<?= e(asset('images/locksmiths-ie-logo.svg')) ?>" alt="Locksmiths.ie - PSA Licensed Dublin Locksmith" width="160" height="40">
+      <?php
+      $logoPath = $logo ?: '/assets/images/locksmiths-ie-logo-horizontal.svg';
+      $logoExt  = strtolower(pathinfo(parse_url($logoPath, PHP_URL_PATH) ?? $logoPath, PATHINFO_EXTENSION));
+      $logoSrc  = SITE_URL . $logoPath;
+      ?>
+      <img src="<?= e($logoSrc) ?>" alt="Locksmiths.ie - PSA Licensed Dublin Locksmith"
+           width="250" height="55" decoding="async"
+           <?= $logoExt === 'svg' ? '' : 'loading="eager"' ?>>
     </a>
 
     <nav class="primary-nav" aria-label="Primary">
@@ -67,8 +82,31 @@ if ($breadcrumbs) echo schema_breadcrumbs($breadcrumbs);
       </button>
       <ul id="primary-menu">
         <li><a href="<?= e(url('/')) ?>">Home</a></li>
-        <li><a href="<?= e(url('/services')) ?>">Services</a></li>
-        <li><a href="<?= e(url('/locations')) ?>">Locations</a></li>
+
+        <li class="has-dropdown">
+          <a href="<?= e(url('/services')) ?>" aria-haspopup="true" aria-expanded="false">Services <span class="caret" aria-hidden="true">▾</span></a>
+          <div class="dropdown" role="menu">
+            <div class="dropdown__grid">
+              <?php foreach ($nav_services as $s): ?>
+                <a role="menuitem" href="<?= e(url('/' . $s['slug'])) ?>"><?= e($s['title']) ?></a>
+              <?php endforeach; ?>
+            </div>
+            <a class="dropdown__more" href="<?= e(url('/services')) ?>">View all services →</a>
+          </div>
+        </li>
+
+        <li class="has-dropdown">
+          <a href="<?= e(url('/locations')) ?>" aria-haspopup="true" aria-expanded="false">Locations <span class="caret" aria-hidden="true">▾</span></a>
+          <div class="dropdown" role="menu">
+            <div class="dropdown__grid dropdown__grid--locations">
+              <?php foreach ($nav_locations as $l): ?>
+                <a role="menuitem" href="<?= e(url('/' . $l['slug'])) ?>"><?= e($l['name']) ?></a>
+              <?php endforeach; ?>
+            </div>
+            <a class="dropdown__more" href="<?= e(url('/locations')) ?>">View all locations →</a>
+          </div>
+        </li>
+
         <li><a href="<?= e(url('/about')) ?>">About</a></li>
         <li><a href="<?= e(url('/reviews')) ?>">Reviews</a></li>
         <li><a href="<?= e(url('/contact')) ?>">Contact</a></li>
@@ -89,11 +127,5 @@ if ($breadcrumbs) echo schema_breadcrumbs($breadcrumbs);
     </div>
   </div>
 </header>
-
-<?php if ($breadcrumbs): ?>
-<div class="container">
-  <?= render_breadcrumbs($breadcrumbs) ?>
-</div>
-<?php endif; ?>
 
 <main id="main">

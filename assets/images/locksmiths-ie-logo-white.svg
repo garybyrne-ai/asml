@@ -1,7 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50" role="img" aria-label="Locksmiths.ie">
-  <g fill="#ffffff">
-    <path d="M14 8a10 10 0 0 0-10 10v6h4v-6a6 6 0 0 1 12 0v6h4v-6A10 10 0 0 0 14 8zm-9 18h18a3 3 0 0 1 3 3v13a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V29a3 3 0 0 1 3-3z"/>
-    <text x="40" y="24" font-family="Outfit, sans-serif" font-weight="800" font-size="20">Locksmiths</text>
-    <text x="40" y="42" font-family="Inter, sans-serif" font-weight="600" font-size="12" fill="#ffb300">.ie · PSA Licensed</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 110" width="500" height="110" role="img" aria-label="Locksmiths.ie">
+  <defs>
+    <linearGradient id="wMetal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#f3f6fb"/>
+      <stop offset="1"   stop-color="#a4adbc"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(55 55) scale(.28)">
+    <g>
+      <g transform="rotate(-22)">
+        <circle cx="-160" cy="0" r="32" fill="url(#wMetal)"/>
+        <circle cx="-160" cy="0" r="14" fill="#0e1f4a"/>
+        <rect x="-128" y="-9" width="240" height="18" fill="url(#wMetal)"/>
+        <rect x="86"  y="9"  width="14" height="14" fill="url(#wMetal)"/>
+      </g>
+      <g transform="rotate(22)">
+        <circle cx="160" cy="0" r="32" fill="url(#wMetal)"/>
+        <circle cx="160" cy="0" r="14" fill="#0e1f4a"/>
+        <rect x="-112" y="-9" width="240" height="18" fill="url(#wMetal)"/>
+        <rect x="-100" y="9"  width="14" height="14" fill="url(#wMetal)"/>
+      </g>
+    </g>
+    <path d="M-150 -150 H150 V20 C150 110 80 170 0 200 C-80 170 -150 110 -150 20 Z" fill="#ff8c2a"/>
+    <path d="M-138 -138 H138 V18 C138 100 75 156 0 184 C-75 156 -138 100 -138 18 Z" fill="#0e1f4a"/>
+    <g fill="#fff">
+      <circle cx="0" cy="-30" r="26"/>
+      <path d="M-12 -30 L-18 70 H18 L12 -30 Z"/>
+    </g>
+    <g transform="translate(-130 50)" fill="#169b3d">
+      <circle cx="0"   cy="-12" r="14"/>
+      <circle cx="-13" cy="6"   r="14"/>
+      <circle cx="13"  cy="6"   r="14"/>
+    </g>
+  </g>
+
+  <g font-family="Outfit, 'Trebuchet MS', sans-serif" font-weight="900">
+    <text x="120" y="60" font-size="44" fill="#fff">Locksmiths<tspan fill="#ff8c2a">.ie</tspan></text>
+    <text x="121" y="86" font-family="Inter, sans-serif" font-weight="700"
+          font-size="13" letter-spacing="2" fill="#cfd6e4">PSA LICENSED · DUBLIN 24/7</text>
   </g>
 </svg>

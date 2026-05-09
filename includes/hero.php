@@ -69,22 +69,9 @@ $response= setting('response_time', '20-30 minutes');
 
         <div class="quote-form__row">
           <label>
-            <span>Area</span>
-            <select name="area" required>
-              <option value="">Select area…</option>
-              <optgroup label="Dublin City">
-                <option>Dublin 1</option><option>Dublin 2</option>
-                <option>Dublin 4</option><option>Dublin 6</option>
-                <option>Dublin 15</option><option>Dublin 18</option>
-                <option>Other Dublin</option>
-              </optgroup>
-              <optgroup label="Greater Dublin">
-                <option>Tallaght</option><option>Swords</option>
-                <option>Saggart / Citywest</option>
-                <option>Kildare</option><option>Meath</option>
-                <option>Wicklow</option>
-              </optgroup>
-            </select>
+            <span>Location</span>
+            <input type="text" name="area" required autocomplete="address-level2"
+                   placeholder="e.g. Tallaght, Dublin 6, Swords">
           </label>
 
           <label>
@@ -98,9 +85,21 @@ $response= setting('response_time', '20-30 minutes');
               <option>Car Key / Programming</option>
               <option>Safe Opening</option>
               <option>Commercial</option>
+              <option>Other</option>
             </select>
           </label>
         </div>
+
+        <label>
+          <span>Message <small style="font-weight:500;color:var(--c-muted)">(optional)</small></span>
+          <textarea name="message" rows="3" maxlength="800"
+                    placeholder="Anything else we should know? (e.g. brand of lock, type of door)"></textarea>
+        </label>
+
+        <!-- Honeypot -->
+        <label style="position:absolute;left:-9999px" aria-hidden="true">
+          Website <input type="text" name="website" tabindex="-1" autocomplete="off">
+        </label>
 
         <button type="submit" class="btn btn--primary btn--block">
           Get my quote →

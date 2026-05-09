@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 110" width="500" height="110" role="img" aria-label="Locksmiths.ie - PSA Licensed Dublin Locksmith">
+  <defs>
+    <linearGradient id="hShield" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"  stop-color="#1c4396"/>
+      <stop offset=".55" stop-color="#0e1f4a"/>
+      <stop offset="1"  stop-color="#0a1738"/>
+    </linearGradient>
+    <linearGradient id="hOrange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffb547"/>
+      <stop offset="1" stop-color="#ff7b1a"/>
+    </linearGradient>
+    <linearGradient id="hMetal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#f3f6fb"/>
+      <stop offset=".5"  stop-color="#bfc7d4"/>
+      <stop offset="1"   stop-color="#7c8696"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Shield + keys group, scaled down -->
+  <g transform="translate(55 55) scale(.28)">
+    <g>
+      <g transform="rotate(-22)">
+        <circle cx="-160" cy="0" r="32" fill="url(#hMetal)" stroke="#3a4252" stroke-width="3"/>
+        <circle cx="-160" cy="0" r="14" fill="#0e1f4a"/>
+        <rect x="-128" y="-9" width="240" height="18" fill="url(#hMetal)" stroke="#3a4252" stroke-width="2"/>
+        <rect x="86"  y="9"  width="14" height="14" fill="url(#hMetal)" stroke="#3a4252" stroke-width="2"/>
+      </g>
+      <g transform="rotate(22)">
+        <circle cx="160" cy="0" r="32" fill="url(#hMetal)" stroke="#3a4252" stroke-width="3"/>
+        <circle cx="160" cy="0" r="14" fill="#0e1f4a"/>
+        <rect x="-112" y="-9" width="240" height="18" fill="url(#hMetal)" stroke="#3a4252" stroke-width="2"/>
+        <rect x="-100" y="9"  width="14" height="14" fill="url(#hMetal)" stroke="#3a4252" stroke-width="2"/>
+      </g>
+    </g>
+    <path d="M-150 -150 H150 V20 C150 110 80 170 0 200 C-80 170 -150 110 -150 20 Z" fill="url(#hOrange)"/>
+    <path d="M-138 -138 H138 V18 C138 100 75 156 0 184 C-75 156 -138 100 -138 18 Z" fill="url(#hShield)"/>
+    <g fill="#fff">
+      <circle cx="0" cy="-30" r="26"/>
+      <path d="M-12 -30 L-18 70 H18 L12 -30 Z"/>
+    </g>
+    <!-- shamrock -->
+    <g transform="translate(-130 50)" fill="#169b3d" stroke="#0c6928" stroke-width="2">
+      <circle cx="0"   cy="-12" r="14"/>
+      <circle cx="-13" cy="6"   r="14"/>
+      <circle cx="13"  cy="6"   r="14"/>
+    </g>
+  </g>
+
+  <!-- Wordmark -->
+  <g font-family="Outfit, 'Trebuchet MS', sans-serif" font-weight="900">
+    <text x="120" y="60" font-size="44" fill="#0e1f4a"
+          paint-order="stroke" stroke="#ff8c2a" stroke-width="0">Locksmiths<tspan fill="#ff8c2a">.ie</tspan></text>
+    <text x="121" y="86" font-family="Inter, sans-serif" font-weight="700"
+          font-size="13" letter-spacing="2" fill="#169b3d">PSA LICENSED · DUBLIN 24/7</text>
+  </g>
+</svg>

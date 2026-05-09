@@ -24,6 +24,8 @@ unset($_SESSION['flash']);
     <a href="<?= e(url('/admin/faqs.php')) ?>">FAQs</a>
     <a href="<?= e(url('/admin/quotes.php')) ?>">Quote Requests</a>
     <a href="<?= e(url('/admin/settings.php')) ?>">Global Settings</a>
+    <a href="<?= e(url('/admin/logo.php')) ?>">Logo</a>
+    <a href="<?= e(url('/admin/custom-css.php')) ?>">Custom CSS</a>
     <a href="<?= e(url('/admin/smtp.php')) ?>">SMTP / Mail</a>
     <a href="<?= e(url('/admin/code-injection.php')) ?>">Code Injection</a>
     <a href="<?= e(url('/admin/logout.php')) ?>" class="admin-logout">Log out</a>

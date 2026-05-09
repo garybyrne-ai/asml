@@ -38,6 +38,26 @@
         <li><?= e(setting('address_street')) ?>, <?= e(setting('address_city')) ?>, <?= e(setting('address_postcode')) ?></li>
         <li>Open 24 hours · 7 days</li>
       </ul>
+
+      <?php
+      $socials = [
+        'twitter'   => ['label' => 'Twitter',   'url' => setting('social_twitter')],
+        'pinterest' => ['label' => 'Pinterest', 'url' => setting('social_pinterest')],
+        'facebook'  => ['label' => 'Facebook',  'url' => setting('social_facebook')],
+        'instagram' => ['label' => 'Instagram', 'url' => setting('social_instagram')],
+        'linkedin'  => ['label' => 'LinkedIn',  'url' => setting('social_linkedin')],
+        'youtube'   => ['label' => 'YouTube',   'url' => setting('social_youtube')],
+      ];
+      $socials = array_filter($socials, fn($s) => !empty($s['url']));
+      if ($socials): ?>
+        <h4 style="margin-top:1.2rem;font-size:.95rem">Follow us</h4>
+        <ul class="social-list">
+          <?php foreach ($socials as $key => $s): ?>
+            <li><a href="<?= e($s['url']) ?>" target="_blank" rel="noopener me"
+                   aria-label="<?= e($s['label']) ?>"><?= e($s['label']) ?></a></li>
+          <?php endforeach; ?>
+        </ul>
+      <?php endif; ?>
     </div>
   </div>
 

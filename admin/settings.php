@@ -22,6 +22,12 @@ $keys = [
     'hero_title'       => 'Default hero H1',
     'hero_subtitle'    => 'Default hero subtitle',
     'google_maps_key'  => 'Google Maps API key (optional)',
+    'social_twitter'   => 'Twitter / X URL',
+    'social_pinterest' => 'Pinterest URL',
+    'social_facebook'  => 'Facebook URL',
+    'social_instagram' => 'Instagram URL',
+    'social_linkedin'  => 'LinkedIn URL',
+    'social_youtube'   => 'YouTube URL',
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

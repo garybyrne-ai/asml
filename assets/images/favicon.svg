@@ -1,7 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#0b1d3a"/>
-  <path d="M32 14a12 12 0 0 0-12 12v6h6v-6a6 6 0 0 1 12 0v6h6v-6a12 12 0 0 0-12-12z" fill="#ffb300"/>
-  <rect x="18" y="32" width="28" height="22" rx="4" fill="#ffb300"/>
-  <circle cx="32" cy="42" r="3" fill="#0b1d3a"/>
-  <rect x="31" y="44" width="2" height="6" fill="#0b1d3a"/>
+  <rect width="64" height="64" rx="12" fill="#0e1f4a"/>
+  <!-- Shield -->
+  <path d="M14 14 H50 V36 C50 48 41 56 32 60 C23 56 14 48 14 36 Z" fill="#ff8c2a"/>
+  <path d="M17 17 H47 V36 C47 46 39 53 32 56 C25 53 17 46 17 36 Z" fill="#0e1f4a"/>
+  <!-- Keyhole -->
+  <circle cx="32" cy="30" r="5" fill="#fff"/>
+  <path d="M30 30 L28 46 H36 L34 30 Z" fill="#fff"/>
+  <!-- Shamrock -->
+  <g fill="#169b3d" transform="translate(48 48)">
+    <circle cx="0"  cy="-4" r="4"/>
+    <circle cx="-4" cy="2" r="4"/>
+    <circle cx="4"  cy="2" r="4"/>
+  </g>
 </svg>

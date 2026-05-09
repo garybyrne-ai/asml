@@ -9,10 +9,33 @@
     $(this).attr('aria-expanded', open ? 'true' : 'false');
   });
 
-  // Close mobile menu after clicking a link
-  $('#primary-menu a').on('click', function () {
+  // Close mobile menu after clicking a real (leaf) link
+  $('#primary-menu a').on('click', function (e) {
+    var $li = $(this).parent('li.has-dropdown');
+    if ($li.length && window.matchMedia('(max-width: 960px)').matches) {
+      // On mobile a tap on the parent toggles the submenu rather than navigating
+      e.preventDefault();
+      $li.toggleClass('is-open').siblings().removeClass('is-open');
+      return;
+    }
     $('.primary-nav').removeClass('is-open');
+    $('.has-dropdown').removeClass('is-open');
     $('.nav-toggle').attr('aria-expanded', 'false');
+  });
+
+  // Close dropdowns on outside click
+  $(document).on('click', function (e) {
+    if (!$(e.target).closest('.has-dropdown').length) {
+      $('.has-dropdown').removeClass('is-open');
+    }
+  });
+
+  // ESC closes
+  $(document).on('keydown', function (e) {
+    if (e.key === 'Escape') {
+      $('.has-dropdown, .primary-nav').removeClass('is-open');
+      $('.nav-toggle').attr('aria-expanded', 'false');
+    }
   });
 
   // AJAX quote submit
