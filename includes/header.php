@@ -34,7 +34,7 @@ function nav_icon(string $name): string
     return $base . ($paths[$name] ?? '') . '</svg>';
 }
 
-$asset_v = '20260509d';   // cache-bust
+$asset_v = '20260509e';   // cache-bust
 ?>
 <!doctype html>
 <html lang="en-IE">
@@ -66,8 +66,8 @@ $asset_v = '20260509d';   // cache-bust
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Share+Tech&family=Public+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech&family=Public+Sans:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="<?= e(asset('css/style.css?v=' . $asset_v)) ?>">
 <link rel="icon" href="<?= e(asset('images/favicon.svg?v=' . $asset_v)) ?>" type="image/svg+xml">
 <link rel="apple-touch-icon" href="<?= e(asset('images/apple-touch-icon.png?v=' . $asset_v)) ?>">

@@ -24,24 +24,7 @@ $breadcrumbs = [
 
 $schema_blocks = [
     schema_faq($faqs),
-    json_ld([
-        '@context'  => 'https://schema.org',
-        '@type'     => 'LocalBusiness',
-        'name'      => 'Locksmith ' . $lname . ' (Locksmiths.ie)',
-        'parentOrganization' => ['@id' => SITE_URL . '#org'],
-        'areaServed' => $lname,
-        'address'   => [
-            '@type'           => 'PostalAddress',
-            'addressLocality' => $lname,
-            'addressRegion'   => 'Dublin',
-            'addressCountry'  => 'IE',
-        ],
-        'geo' => $location['latitude'] ? [
-            '@type'     => 'GeoCoordinates',
-            'latitude'  => (float) $location['latitude'],
-            'longitude' => (float) $location['longitude'],
-        ] : null,
-    ]),
+    schema_location_business($location),
 ];
 
 // Dynamic landmark sentence
@@ -74,6 +57,19 @@ require __DIR__ . '/../includes/hero.php';
     <?php endif; ?>
 
     <?= $location['body'] ?>
+
+    <?php
+    if (!empty($location['latitude']) && !empty($location['longitude'])):
+        $place = $lname . ', Dublin, Ireland';
+        echo '<h2>Find us in ' . e($lname) . '</h2>';
+        echo google_map_iframe(
+            (float) $location['latitude'],
+            (float) $location['longitude'],
+            $place,
+            14
+        );
+    endif;
+    ?>
 
     <h2>Locksmith services in <?= e($lname) ?></h2>
     <div class="services-grid services-grid--compact">

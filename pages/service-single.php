@@ -20,19 +20,7 @@ $breadcrumbs = [
 
 $schema_blocks = [
     schema_faq($faqs),
-    json_ld([
-        '@context'    => 'https://schema.org',
-        '@type'       => 'Service',
-        'serviceType' => $service['title'],
-        'provider'    => ['@id' => SITE_URL . '#org'],
-        'areaServed'  => 'Dublin, Ireland',
-        'description' => $service['short_description'],
-        'offers'      => [
-            '@type'         => 'Offer',
-            'priceCurrency' => 'EUR',
-            'price'         => $service['price_from'] ?? null,
-        ],
-    ]),
+    schema_service($service),
 ];
 
 $hero = [

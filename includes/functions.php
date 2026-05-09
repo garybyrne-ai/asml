@@ -214,23 +214,73 @@ function json_ld(array $data): string
          . '</script>';
 }
 
+/**
+ * Drop null/empty entries from an array — JSON-LD validators reject explicit
+ * null values and empty objects. Use before json_encoding any structured data.
+ *
+ * @param array<string,mixed> $a
+ * @return array<string,mixed>
+ */
+function jsonld_clean(array $a): array
+{
+    $out = [];
+    foreach ($a as $k => $v) {
+        if (is_array($v)) {
+            // nested associative array → recurse; nested list → leave as-is
+            $is_list = array_is_list($v);
+            $v = $is_list ? array_values(array_filter($v, fn($x) => $x !== null && $x !== '')) : jsonld_clean($v);
+            if ($v === [] || $v === null) continue;
+        }
+        if ($v === null || $v === '') continue;
+        $out[$k] = $v;
+    }
+    return $out;
+}
+
+/**
+ * Returns the social profile URLs configured in admin, in the format
+ * Schema.org "sameAs" expects (a list of URLs).
+ *
+ * @return array<int,string>
+ */
+function business_same_as(): array
+{
+    $keys = ['social_facebook','social_twitter','social_instagram','social_pinterest','social_linkedin','social_youtube'];
+    $urls = [];
+    foreach ($keys as $k) {
+        $v = trim(setting($k));
+        if ($v !== '') $urls[] = $v;
+    }
+    return $urls;
+}
+
 function schema_local_business(): string
 {
-    $reviews = get_testimonials(5, true);
-    $rating  = 0.0;
-    foreach ($reviews as $r) $rating += (int) $r['rating'];
-    $rating  = $reviews ? round($rating / count($reviews), 1) : 5.0;
+    $allReviews = get_testimonials(200);
+    $count   = count($allReviews);
+    $rating  = 5.0;
+    if ($count > 0) {
+        $sum = 0;
+        foreach ($allReviews as $r) $sum += (int) $r['rating'];
+        $rating = round($sum / $count, 1);
+    }
 
-    return json_ld([
+    $logo = setting('logo');
+    $logoAbs = $logo ? (preg_match('~^https?://~', $logo) ? $logo : SITE_URL . $logo) : null;
+
+    $data = jsonld_clean([
         '@context'      => 'https://schema.org',
-        '@type'         => ['LocalBusiness', 'Locksmith'],
+        '@type'         => 'Locksmith',
         '@id'           => SITE_URL . '#org',
         'name'          => setting('business_name'),
         'url'           => SITE_URL,
         'telephone'     => setting('phone'),
         'email'         => setting('email'),
-        'image'         => SITE_URL . setting('logo'),
+        'image'         => $logoAbs,
+        'logo'          => $logoAbs,
         'priceRange'    => setting('price_range', '€€'),
+        'currenciesAccepted' => 'EUR',
+        'paymentAccepted'    => 'Cash, Credit Card, Debit Card, Bank Transfer',
         'address'       => [
             '@type'           => 'PostalAddress',
             'streetAddress'   => setting('address_street'),
@@ -238,24 +288,111 @@ function schema_local_business(): string
             'postalCode'      => setting('address_postcode'),
             'addressCountry'  => setting('address_country', 'IE'),
         ],
-        'geo' => [
+        'geo' => (setting('latitude') && setting('longitude')) ? [
             '@type'     => 'GeoCoordinates',
             'latitude'  => (float) setting('latitude'),
             'longitude' => (float) setting('longitude'),
-        ],
+        ] : null,
         'openingHoursSpecification' => [
             '@type'     => 'OpeningHoursSpecification',
             'dayOfWeek' => ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
             'opens'     => '00:00',
             'closes'    => '23:59',
         ],
-        'aggregateRating' => [
+        'sameAs'     => business_same_as() ?: null,
+        'areaServed' => array_values(array_map(fn($l) => $l['name'], get_locations())) ?: null,
+    ]);
+
+    if ($count >= 1) {
+        $data['aggregateRating'] = [
             '@type'       => 'AggregateRating',
             'ratingValue' => $rating,
-            'reviewCount' => max(25, count(get_testimonials(100))),
-        ],
-        'areaServed' => array_map(fn($l) => $l['name'], get_locations()),
+            'reviewCount' => $count,
+            'bestRating'  => 5,
+            'worstRating' => 1,
+        ];
+    }
+    return json_ld($data);
+}
+
+/**
+ * Build a Service / LocksmithService JSON-LD block tied to the org.
+ *
+ * @param array<string,mixed> $service
+ */
+function schema_service(array $service): string
+{
+    $data = jsonld_clean([
+        '@context'    => 'https://schema.org',
+        '@type'       => 'Service',
+        'serviceType' => $service['title'],
+        'name'        => $service['title'] . ' Dublin',
+        'description' => $service['short_description'] ?: $service['meta_description'],
+        'url'         => build_canonical('/' . $service['slug']),
+        'provider'    => ['@id' => SITE_URL . '#org'],
+        'areaServed'  => ['@type' => 'AdministrativeArea', 'name' => 'Dublin, Ireland'],
     ]);
+    if (!empty($service['price_from'])) {
+        $data['offers'] = [
+            '@type'         => 'Offer',
+            'priceCurrency' => 'EUR',
+            'price'         => (string) $service['price_from'],
+            'availability'  => 'https://schema.org/InStock',
+            'url'           => build_canonical('/' . $service['slug']),
+        ];
+    }
+    return json_ld($data);
+}
+
+/**
+ * Build a LocalBusiness JSON-LD block scoped to a single location/area.
+ *
+ * @param array<string,mixed> $location
+ */
+function schema_location_business(array $location): string
+{
+    $name = 'Locksmith ' . $location['name'] . ' — Locksmiths.ie';
+    $data = jsonld_clean([
+        '@context'           => 'https://schema.org',
+        '@type'              => 'Locksmith',
+        'name'               => $name,
+        'url'                => build_canonical('/' . $location['slug']),
+        'parentOrganization' => ['@id' => SITE_URL . '#org'],
+        'telephone'          => setting('phone'),
+        'priceRange'         => setting('price_range', '€€'),
+        'areaServed'         => ['@type' => 'AdministrativeArea', 'name' => $location['name'] . ', Dublin, Ireland'],
+        'address'            => [
+            '@type'           => 'PostalAddress',
+            'addressLocality' => $location['name'],
+            'addressRegion'   => 'Dublin',
+            'addressCountry'  => 'IE',
+        ],
+        'geo' => ($location['latitude'] && $location['longitude']) ? [
+            '@type'     => 'GeoCoordinates',
+            'latitude'  => (float) $location['latitude'],
+            'longitude' => (float) $location['longitude'],
+        ] : null,
+        'openingHoursSpecification' => [
+            '@type'     => 'OpeningHoursSpecification',
+            'dayOfWeek' => ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+            'opens'     => '00:00',
+            'closes'    => '23:59',
+        ],
+    ]);
+    return json_ld($data);
+}
+
+/**
+ * Render a Google Maps iframe centred on the given coordinates. No API key
+ * needed for the basic place embed — uses the public maps.google.com path.
+ */
+function google_map_iframe(float $lat, float $lng, string $place = '', int $zoom = 14): string
+{
+    $q  = $place !== '' ? rawurlencode($place) : "{$lat},{$lng}";
+    $src = "https://www.google.com/maps?q={$q}&z={$zoom}&hl=en&t=m&output=embed";
+    return '<div class="map-embed"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" '
+         . 'src="' . htmlspecialchars($src, ENT_QUOTES) . '" '
+         . 'style="border:0" allowfullscreen title="' . htmlspecialchars($place ?: "{$lat},{$lng}") . ' — Google Maps"></iframe></div>';
 }
 
 /**

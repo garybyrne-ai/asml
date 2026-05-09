@@ -214,7 +214,7 @@ INSERT INTO `settings` (`setting_key`, `setting_value`) VALUES
 ('logo',                '/assets/images/locksmiths-ie-logo-horizontal.svg'),
 ('social_twitter',      'https://twitter.com/IeLocksmiths'),
 ('social_pinterest',    'https://www.pinterest.com/ielocksmiths/'),
-('social_facebook',     ''),
+('social_facebook', 'https://www.facebook.com/p/LocksmithsIE-100057039626907/'),
 ('social_instagram',    ''),
 ('social_linkedin',     ''),
 ('social_youtube',      ''),
@@ -241,7 +241,7 @@ INSERT IGNORE INTO `services` (`slug`, `title`, `category`, `short_description`,
  '<p>Our 24/7 emergency lockout service covers all of Dublin and the Greater Dublin Area. Whether you are locked out of your home, office or car, our PSA-licensed technicians arrive on-site in 20–30 minutes with the tools and skill to get you back inside without damaging your door or lock.</p>',
  'key', 'Emergency Locksmith Dublin | 20-Min Response | PSA Licensed',
  'Locked out in Dublin? Our PSA-licensed emergency locksmiths arrive in 20 minutes. No call-out fee. Available 24/7 across all Dublin districts.',
- 'emergency locksmith dublin', 80.00, 1),
+ 'emergency locksmith dublin', 90.00, 1),
 
 ('burglary-repairs',   'Burglary Damage Repairs',     'residential',
  'Fast lock and door repair after a break-in. Insurance-approved reports provided.',
@@ -390,7 +390,7 @@ INSERT INTO `settings` (`setting_key`,`setting_value`) VALUES
 ('address_country',  'IE'),
 ('psa_license',      'PSA 00709'),
 ('logo',             '/assets/images/locksmiths-ie-logo-horizontal.svg'),
-('social_facebook',  ''),
+('social_facebook', 'https://www.facebook.com/p/LocksmithsIE-100057039626907/'),
 ('social_twitter',   'https://twitter.com/IeLocksmiths'),
 ('social_pinterest', 'https://www.pinterest.com/ielocksmiths/'),
 ('social_instagram', ''),
@@ -409,35 +409,35 @@ INSERT IGNORE INTO `services`
  '<p>Our 24/7 emergency locksmith team responds across Dublin city and the Greater Dublin Area in 20–30 minutes. Lockouts, break-in repairs, broken keys, snapped cylinders — fixed on the first visit.</p>',
  'siren', 'Emergency Locksmith Dublin | 24/7 PSA Licensed',
  'PSA-licensed emergency locksmith Dublin. 20-min response, 24/7, no call-out fee. Lockouts, lock changes and burglary repairs.',
- 'emergency locksmith dublin', 80.00, 10),
+ 'emergency locksmith dublin', 90.00, 10),
 
 ('24-hour-locksmith', '24 Hour Locksmith', 'emergency',
  'A locksmith on call 24 hours a day, 365 days a year.',
  '<p>We never close. Our 24-hour Dublin locksmith team are dispatched day and night for lockouts, break-ins and emergency lock changes.</p>',
  'clock', '24 Hour Locksmith Dublin | Always Open',
  '24 hour locksmith Dublin — PSA-licensed, fast response, no call-out fee. Open 24/7/365.',
- '24 hour locksmith dublin', 80.00, 11),
+ '24 hour locksmith dublin', 90.00, 11),
 
 ('locksmith-dublin-24-7', 'Locksmith Dublin 24/7', 'emergency',
  'Always-open Dublin locksmith. Phones answered immediately, fast on-site response.',
  '<p>When you need a locksmith in Dublin at 3am, you need someone who actually answers the phone. We do — 24 hours a day, 7 days a week, including bank holidays.</p>',
  'phone', 'Locksmith Dublin 24/7 | PSA Licensed Emergency Service',
  '24/7 Dublin locksmith. PSA licensed, 20-minute response, no call-out fee, 12-month guarantee on every job.',
- 'locksmith dublin 24/7', 80.00, 12),
+ 'locksmith dublin 24/7', 90.00, 12),
 
 ('locksmith-near-me-dublin', 'Locksmith Near Me — Dublin', 'emergency',
  'Local PSA-licensed locksmith covering every Dublin postcode and surrounding county.',
  '<p>Searching for a "locksmith near me" in Dublin? We have technicians spread across Dublin city and county so we are usually 15 minutes from your door — Tallaght, Swords, Blanchardstown, Dundrum, Lucan or anywhere inside the M50.</p>',
  'pin', 'Locksmith Near Me Dublin | 15-Min Local Response',
  'Local Dublin locksmith near you. PSA licensed, 15-minute average response across Dublin city and county. Call now.',
- 'locksmith near me dublin', 80.00, 13),
+ 'locksmith near me dublin', 90.00, 13),
 
 ('mobile-locksmith-dublin', 'Mobile Locksmith Dublin', 'emergency',
  'Fully-equipped mobile locksmith vans across Dublin — work completed at your door.',
  '<p>Our mobile workshops are stocked with cylinders, multipoint mechanisms, smart locks, key blanks and programming tools so 95% of jobs are finished in a single visit.</p>',
  'truck', 'Mobile Locksmith Dublin | Fully-Equipped Vans',
  'Mobile locksmith Dublin — vans stocked with locks, mechanisms and key blanks. Most jobs finished in one visit.',
- 'mobile locksmith dublin', 80.00, 14),
+ 'mobile locksmith dublin', 90.00, 14),
 
 ('same-day-locksmith', 'Same Day Locksmith Service', 'emergency',
  'Booked today, fixed today — guaranteed across Dublin.',
@@ -451,7 +451,7 @@ INSERT IGNORE INTO `services`
  '<p>Most weekend lockouts happen between 1am and 4am. We dispatch the same way we do midweek: 20-minute response, fixed price, no surcharge.</p>',
  'calendar', 'Weekend Locksmith Dublin | No Surcharge',
  'Weekend locksmith Dublin (Sat & Sun). PSA licensed, no weekend surcharge, fast response.',
- 'weekend locksmith dublin', 80.00, 16),
+ 'weekend locksmith dublin', 90.00, 16),
 
 ('night-locksmith', 'Night Locksmith Service', 'emergency',
  'Out-of-hours night locksmith — phones answered all night.',
@@ -465,7 +465,7 @@ INSERT IGNORE INTO `services`
  '<p>Whether you have left the keys inside, snapped a key off in the lock or lost them entirely, we open the door with no damage in over 95% of cases.</p>',
  'door', 'Emergency Door Opening Dublin | Non-Destructive',
  'Emergency door opening across Dublin. Non-destructive entry in 95% of cases. PSA licensed.',
- 'emergency door opening dublin', 80.00, 18),
+ 'emergency door opening dublin', 90.00, 18),
 
 -- Residential
 ('residential-locksmith', 'Residential Locksmith', 'residential',
@@ -480,7 +480,7 @@ INSERT IGNORE INTO `services`
  '<p>Our techs use bypass tools and PSA-approved entry methods — 95% of house lockouts are opened with no damage to the door, lock or frame.</p>',
  'home', 'House Lockout Dublin | No Damage Entry',
  'Locked out of your house in Dublin? PSA-licensed locksmith on-site in 20 minutes with non-destructive entry.',
- 'house lockout dublin', 80.00, 21),
+ 'house lockout dublin', 90.00, 21),
 
 ('lock-replacement', 'Lock Replacement', 'residential',
  'Full lock replacement — Yale, ABS, Mul-T-Lock, Brisant.',
@@ -508,7 +508,7 @@ INSERT IGNORE INTO `services`
  '<p>Rekeying changes the cylinder pins so old keys no longer work. Cheaper than full replacement — ideal after losing keys, ending a tenancy or buying a property.</p>',
  'key', 'Lock Rekeying Dublin | Cheaper Than New Locks',
  'Lock rekeying Dublin. Reset locks so old keys no longer work — cheaper than replacement. PSA licensed.',
- 'lock rekeying dublin', 70.00, 25),
+ 'lock rekeying dublin', 90.00, 25),
 
 ('tenant-lock-changes', 'Tenant Lock Changes', 'residential',
  'Lock changes between tenancies — quick, insurance-compliant, with copies.',
@@ -557,7 +557,7 @@ INSERT IGNORE INTO `services`
  '<p>We supply and fit lever-on-rose, lever-on-backplate and pull handles for residential and commercial doors.</p>',
  'tool', 'Door Handle Repair Dublin | Same Day',
  'Door handle repair and replacement Dublin. Same-day PSA-licensed service.',
- 'door handle repair dublin', 75.00, 32),
+ 'door handle repair dublin', 90.00, 32),
 
 ('door-closer-installation', 'Door Closer Installation', 'commercial',
  'Overhead and concealed door closers fitted to fire and access doors.',
@@ -651,7 +651,7 @@ INSERT IGNORE INTO `services`
  '<p>Most domestic keys cut on-site in 60 seconds — Yale, Mul-T-Lock, ABS, Avocet, ERA, Era Fortress, Chubb, Banham.</p>',
  'key', 'Key Cutting Dublin | Mobile Service',
  'Mobile key cutting Dublin. All domestic and most commercial keys cut on-site.',
- 'key cutting dublin', 8.00, 45),
+ 'key cutting dublin', 90.00, 45),
 
 ('lost-keys', 'Lost Keys Service', 'emergency',
  'Lost keys? We make a new key and rekey the locks.',
@@ -665,14 +665,14 @@ INSERT IGNORE INTO `services`
  '<p>Specialist extractor tools mean the cylinder almost never has to be replaced.</p>',
  'key', 'Broken Key Extraction Dublin | Same Day',
  'Broken key extraction Dublin. PSA-licensed, no cylinder damage.',
- 'broken key extraction dublin', 75.00, 47),
+ 'broken key extraction dublin', 90.00, 47),
 
 ('lockout-service', 'Lockout Service', 'emergency',
  'House, office and car lockout assistance across Dublin.',
  '<p>Our PSA-licensed techs open homes, offices, vans and cars with no damage in over 95% of jobs.</p>',
  'key', 'Lockout Service Dublin | 20-Min Response',
  'Locked out in Dublin? PSA-licensed lockout service with 20-minute response.',
- 'lockout service dublin', 80.00, 48),
+ 'lockout service dublin', 90.00, 48),
 
 ('office-lockout', 'Office Lockout Service', 'commercial',
  'Office and commercial lockouts opened in 20 minutes.',
@@ -772,7 +772,7 @@ INSERT IGNORE INTO `services`
  '<p>Espagnolette, shootbolt and cockspur window locks. Insurance-compliant key-locking versions fitted.</p>',
  'lock', 'Window Lock Repair Dublin',
  'Window lock repair Dublin — espag, shootbolt, cockspur.',
- 'window lock repair dublin', 80.00, 62),
+ 'window lock repair dublin', 90.00, 62),
 
 ('safe-installation', 'Safe Installation', 'safe',
  'Domestic and commercial safes supplied and fitted.',
@@ -793,7 +793,7 @@ INSERT IGNORE INTO `services`
  '<p>Cam locks for mailboxes — keys provided. Block-wide replacements available.</p>',
  'lock', 'Mailbox Lock Replacement Dublin',
  'Mailbox lock replacement Dublin — apartment blocks, post boxes.',
- 'mailbox lock replacement dublin', 60.00, 65),
+ 'mailbox lock replacement dublin', 90.00, 65),
 
 ('shutter-lock-repair', 'Shutter Lock Repair', 'commercial',
  'Roller-shutter locks repaired on retail and warehouse units.',
@@ -1017,7 +1017,7 @@ INSERT IGNORE INTO `services`
  '<p>Locked out in Tallaght? Our nearest van is usually no more than 12 minutes from The Square. We cover Old Bawn, Killinarden, Jobstown, Firhouse and Templeogue with the same 20-minute response promise.</p><h2>Common Tallaght jobs</h2><ul><li>House lockouts on apartment blocks around The Square</li><li>UPVC mechanism replacements on estates around Old Bawn</li><li>Anti-snap upgrades after break-ins in Jobstown / Killinarden</li><li>Office lockouts on the IDA Tallaght business park</li></ul>',
  'siren', 'Emergency Locksmith Tallaght | 12-Min Response',
  'Emergency locksmith Tallaght — PSA-licensed, 12-minute response near The Square. 24/7, no call-out fee.',
- 'emergency locksmith tallaght', 80.00, 200),
+ 'emergency locksmith tallaght', 90.00, 200),
 
 ('car-locksmith-swords', 'Car Locksmith Swords', 'automotive',
  'Auto locksmith covering Swords, the Pavilions and Dublin Airport.',
@@ -1031,21 +1031,21 @@ INSERT IGNORE INTO `services`
  '<p>Lockouts, lock changes, smart locks and burglary repair across Clondalkin, Neilstown and Liffey Valley.</p>',
  'home', 'Locksmith Clondalkin | West Dublin Service',
  'Locksmith Clondalkin — fast PSA-licensed locksmith service across West Dublin.',
- 'locksmith clondalkin', 80.00, 202),
+ 'locksmith clondalkin', 90.00, 202),
 
 ('locksmith-lucan-service', 'Locksmith Lucan', 'emergency',
  'Lucan locksmith — covering Adamstown, Esker and Lucan Village.',
  '<p>House and apartment lockouts, anti-snap upgrades and UPVC repairs across Lucan, Adamstown and Esker.</p>',
  'home', 'Locksmith Lucan | West Dublin',
  'Locksmith Lucan — PSA licensed, 20-minute response across Lucan, Adamstown and Esker.',
- 'locksmith lucan', 80.00, 203),
+ 'locksmith lucan', 90.00, 203),
 
 ('locksmith-dundrum-service', 'Locksmith Dundrum', 'emergency',
  'Dundrum locksmith — covering Goatstown, Churchtown and Windy Arbour.',
  '<p>Fast lock changes, smart-lock fitting and UPVC mechanism repair around Dundrum Town Centre.</p>',
  'home', 'Locksmith Dundrum | South Dublin',
  'Locksmith Dundrum — PSA licensed, 20-minute response across South Dublin.',
- 'locksmith dundrum', 80.00, 204);
+ 'locksmith dundrum', 90.00, 204);
 
 -- ---------- Landlord FAQs to support the new pages ----------
 INSERT IGNORE INTO `faqs` (`question`,`answer`,`is_global`,`sort_order`) VALUES
@@ -1088,3 +1088,6 @@ INSERT INTO `settings` (`setting_key`,`setting_value`) VALUES
 ('callout_policy',    'Minimum job price €90. We do not offer free call-outs.'),
 ('pricing_intro',     'Indicative prices for the most common Dublin locksmith jobs. Final quote is fixed before any work begins — no surprises.')
 ON DUPLICATE KEY UPDATE `setting_value` = VALUES(`setting_value`);
+
+-- Enforce €90 minimum on every service price (call-out floor)
+UPDATE `services` SET `price_from` = 90.00 WHERE `price_from` IS NOT NULL AND `price_from` < 90;
