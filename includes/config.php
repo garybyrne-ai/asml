@@ -3,25 +3,33 @@ declare(strict_types=1);
 
 /**
  * Locksmiths.ie - Application configuration.
- * Set these via environment variables in production (DigitalOcean / Cloudways).
+ *
+ * Credentials precedence (highest first):
+ *   1. /includes/config.local.php   (NOT committed to git — safe place for prod creds)
+ *   2. Environment variables        (DigitalOcean / Cloudways "Application Vars")
+ *   3. Defaults below                (local dev fallback)
  */
 
+if (is_file(__DIR__ . '/config.local.php')) {
+    require __DIR__ . '/config.local.php';
+}
+
 // ---- Database ----
-define('DB_HOST', getenv('DB_HOST') ?: '127.0.0.1');
-define('DB_NAME', getenv('DB_NAME') ?: 'locksmiths_ie');
-define('DB_USER', getenv('DB_USER') ?: 'locksmiths_user');
-define('DB_PASS', getenv('DB_PASS') ?: '');
-define('DB_CHARSET', 'utf8mb4');
+defined('DB_HOST') || define('DB_HOST', getenv('DB_HOST') ?: '127.0.0.1');
+defined('DB_NAME') || define('DB_NAME', getenv('DB_NAME') ?: 'locksmiths_ie');
+defined('DB_USER') || define('DB_USER', getenv('DB_USER') ?: 'locksmiths_user');
+defined('DB_PASS') || define('DB_PASS', getenv('DB_PASS') ?: '');
+defined('DB_CHARSET') || define('DB_CHARSET', 'utf8mb4');
 
 // ---- Site ----
-define('SITE_URL',   rtrim(getenv('SITE_URL') ?: 'https://locksmiths.ie', '/'));
-define('SITE_ROOT',  dirname(__DIR__));
-define('ASSETS_URL', SITE_URL . '/assets');
+defined('SITE_URL')   || define('SITE_URL',   rtrim(getenv('SITE_URL') ?: 'https://locksmiths.ie', '/'));
+defined('SITE_ROOT')  || define('SITE_ROOT',  dirname(__DIR__));
+defined('ASSETS_URL') || define('ASSETS_URL', SITE_URL . '/assets');
 
 // ---- Security ----
-define('CSRF_TOKEN_NAME', '_csrf');
-define('SESSION_NAME',    'lkid');
-define('ENV', getenv('APP_ENV') ?: 'production');
+defined('CSRF_TOKEN_NAME') || define('CSRF_TOKEN_NAME', '_csrf');
+defined('SESSION_NAME')    || define('SESSION_NAME',    'lkid');
+defined('ENV')             || define('ENV', getenv('APP_ENV') ?: 'production');
 
 // ---- Session ----
 if (session_status() === PHP_SESSION_NONE) {

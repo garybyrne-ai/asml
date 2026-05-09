@@ -1,13 +1,20 @@
 -- =====================================================================
 -- Locksmiths.ie - Dublin Locksmith Website Database Schema
 -- MySQL 8.x / MariaDB 10.x
+--
+-- Cloudways / shared hosting:
+--   The DB is pre-created (e.g. eqdueglqgt). Just open phpMyAdmin,
+--   SELECT that DB in the left sidebar, then Import this file.
+--   Do NOT uncomment the CREATE DATABASE / USE block below.
+--
+-- Local / self-hosted:
+--   Uncomment the two statements below to create a fresh database.
 -- =====================================================================
 
-CREATE DATABASE IF NOT EXISTS `locksmiths_ie`
-  DEFAULT CHARACTER SET utf8mb4
-  COLLATE utf8mb4_unicode_ci;
-
-USE `locksmiths_ie`;
+-- CREATE DATABASE IF NOT EXISTS `locksmiths_ie`
+--   DEFAULT CHARACTER SET utf8mb4
+--   COLLATE utf8mb4_unicode_ci;
+-- USE `locksmiths_ie`;
 
 -- ---------------------------------------------------------------------
 -- Admin users
